@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="base :: head">
+</head>
+<header th:replace="base :: header">
+</header>
+<body>
+<a href="/edit-utilisateur" type="button" class="btn btn-success">Ajouter un utilisateur</a>
+<ul>
+
+    <li th:each="utilisateur : ${utilisateurs}">
+        <span th:text="${utilisateur.dateNaissance} + ' ' + ${utilisateur.name} + ' ' + ${utilisateur.nickname} + ' ' + ${utilisateur.role} + ' ' + ${utilisateur.pays.nom}"></span>
+        <a th:href="'edit-utilisateur/' + ${utilisateur.id}" class="badge badge-success">Editer</a>
+
+    </li>
+</ul>
+</body>
+</html>
