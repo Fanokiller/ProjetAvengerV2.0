@@ -25,7 +25,7 @@ public class Utilisateur {
 
 
     @ManyToOne
-    @JoinColumn(name = "id_Pays")
+
     private Pays pays;
 
 
