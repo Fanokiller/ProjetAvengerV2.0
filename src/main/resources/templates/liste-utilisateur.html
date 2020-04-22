@@ -16,7 +16,7 @@
     <li th:each="utilisateur : ${utilisateurs}">
         <span th:text="${utilisateur.dateNaissance} + ' ' + ${utilisateur.name} + ' ' + ${utilisateur.nickname} + ' ' + ${utilisateur.role} + ' ' + ${utilisateur.pays.nom}"></span>
         <a th:href="'edit-utilisateur/' + ${utilisateur.id}" class="badge badge-success">Editer</a>
-
+        <a th:href="'suppression-utilisateur/' + ${utilisateur.id}" class="badge badge-danger">Supprimer</a>
     </li>
 </ul>
 
