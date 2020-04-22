@@ -6,7 +6,11 @@
 <header th:replace="base :: header">
 </header>
 <body>
-<a href="/edit-utilisateur" type="button" class="btn btn-success">Ajouter un utilisateur</a>
+
+
+<ul>
+    <li th:each="utilisateur:${utilisateurs}" th:text="${utilisateur.name} +' '+ ${utilisateur.nickname}+' '+ ${utilisateur.password}"></li>
+</ul>
 <ul>
 
     <li th:each="utilisateur : ${utilisateurs}">
@@ -15,5 +19,7 @@
 
     </li>
 </ul>
+
+<a href="/edit-utilisateur" type="button" class="btn btn-success">Ajouter un utilisateur</a>
 </body>
 </html>
