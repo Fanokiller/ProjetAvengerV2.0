@@ -1,7 +1,7 @@
 package com.projetjava.appli.model;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
+import java.util.List;
 import javax.persistence.*;
 import java.util.Date;
 
@@ -19,6 +19,24 @@ public class Civil {
     private String nickname;
     @Temporal(TemporalType.DATE)
     private Date dateDeces;
+    @Temporal(TemporalType.DATE)
+    private Date dateModif;
+    @Temporal(TemporalType.DATE)
+    private Date dateAdd;
+
+    @ManyToMany
+    private List<Organisation> listeOrganisation;
+
+    @OneToOne
+    private Identification identifiant;
+
+    public List<Organisation> getListeOrganisation() {
+        return listeOrganisation;
+    }
+
+    public void setListeOrganisation(List<Organisation> listeOrganisation) {
+        this.listeOrganisation = listeOrganisation;
+    }
 
     public int getId() {
            return id;
@@ -50,5 +68,21 @@ public class Civil {
 
     public void setDateDeces(Date dateDeces) {
         this.dateDeces = dateDeces;
+    }
+
+    public Date getDateModif() {
+        return dateModif;
+    }
+
+    public void setDateModif(Date dateModif) {
+        this.dateModif = dateModif;
+    }
+
+    public Date getDateAdd() {
+        return dateAdd;
+    }
+
+    public void setDateAdd(Date dateAdd) {
+        this.dateAdd = dateAdd;
     }
 }
