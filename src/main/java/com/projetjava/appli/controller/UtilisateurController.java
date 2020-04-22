@@ -1,7 +1,7 @@
 package com.projetjava.appli.controller;
 
-import com.projetjava.appli.dao.PaysDAO;
-import com.projetjava.appli.dao.UtilisateurDAO;
+import com.projetjava.appli.dao.CountryDAO;
+import com.projetjava.appli.dao.UserDAO;
 import com.projetjava.appli.model.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,18 +11,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class UtilisateurController {
 
     @Autowired
-    UtilisateurDAO utilisateurDAO;
+    UserDAO utilisateurDAO;
 
     @Autowired
-    PaysDAO paysDAO;
+    CountryDAO paysDAO;
 
     @GetMapping("/liste-utilisateur")
     public String listeUtilisateur(Model model) {
