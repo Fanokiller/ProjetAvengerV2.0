@@ -5,6 +5,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 @EntityListeners(AuditingEntityListener.class)
@@ -25,11 +26,22 @@ public class Utilisateur {
 
 
     @ManyToOne
-
+    @JoinColumn(name = "id_pays")
     private Pays pays;
 
+    @ManyToMany
+    @JoinTable(name = "membre_organisation",
+            joinColumns = @JoinColumn(name = "id_utilisateur"), /*mettre id civil*/
+            inverseJoinColumns = @JoinColumn(name = "id_organisation"))
+    private List<Organisation> listeOrganisation;
 
+    public List<Organisation> getListeOrganisation() {
+        return listeOrganisation;
+    }
 
+    public void setListeOrganisation(List<Organisation> listeOrganisation) {
+        this.listeOrganisation = listeOrganisation;
+    }
 
     public Utilisateur(){
     }

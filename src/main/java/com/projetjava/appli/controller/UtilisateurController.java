@@ -1,15 +1,13 @@
 package com.projetjava.appli.controller;
 
-import com.projetjava.appli.dao.CountryDAO;
-import com.projetjava.appli.dao.UserDAO;
+import com.projetjava.appli.dao.OrganisationDAO;
+import com.projetjava.appli.dao.PaysDAO;
+import com.projetjava.appli.dao.UtilisateurDAO;
 import com.projetjava.appli.model.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -17,10 +15,13 @@ import java.util.Optional;
 public class UtilisateurController {
 
     @Autowired
-    UserDAO utilisateurDAO;
+    UtilisateurDAO utilisateurDAO;
 
     @Autowired
-    CountryDAO paysDAO;
+    PaysDAO paysDAO;
+
+    @Autowired
+    OrganisationDAO organisationDAO;
 
     @GetMapping("/liste-utilisateur")
     public String listeUtilisateur(Model model) {
@@ -44,6 +45,7 @@ public class UtilisateurController {
 
         model.addAttribute("titre", id.isPresent() ? "Edit utilisateurs" : "Nouvel utilisateur");
         model.addAttribute("pays", paysDAO.findAll());
+        model.addAttribute("organisations", organisationDAO.findAll());
         model.addAttribute("utilisateur", utilisateur);
 
         return "edit-utilisateur";
@@ -53,6 +55,14 @@ public class UtilisateurController {
     public String editUtilisateur(@ModelAttribute("utilisateur") Utilisateur utilisateur){
 
         utilisateur = utilisateurDAO.saveAndFlush(utilisateur);
+
+        return "redirect:/liste-utilisateur";
+    }
+
+    @GetMapping("/suppression-utilisateur/{id}")
+    public String delUtilisateur(@PathVariable Integer id){
+        utilisateurDAO.deleteById(id);
+
 
         return "redirect:/liste-utilisateur";
     }

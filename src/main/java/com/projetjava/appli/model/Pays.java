@@ -10,15 +10,15 @@ import javax.persistence.*;
 public class Pays {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idPays;
+    private int id;
     private String nom;
 
-    public int getIdPays() {
-        return idPays;
+    public int getId() {
+        return id;
     }
 
-    public void setIdPays(int idPays) {
-        this.idPays = idPays;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNom() {
