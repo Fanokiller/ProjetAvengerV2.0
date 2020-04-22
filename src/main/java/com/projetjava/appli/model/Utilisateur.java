@@ -2,8 +2,10 @@ package com.projetjava.appli.model;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+
 import javax.persistence.*;
 import java.util.Date;
+
 
 @EntityListeners(AuditingEntityListener.class)
 @Entity
@@ -25,6 +27,8 @@ public class Utilisateur {
     @ManyToOne
     @JoinColumn(name = "id_Pays")
     private Pays pays;
+
+
 
 
     public Utilisateur(){
@@ -87,6 +91,7 @@ public class Utilisateur {
         this.role = role;
     }
 }
+
 
 
 
