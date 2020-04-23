@@ -20,10 +20,13 @@ public class OrganisationController {
     OrganisationDAO organisationDAO;
 
     @Autowired
-    UtilisateurDAO utilisateurDAO;
+
+    PaysDAO paysDAO;
+
 
     @GetMapping("/liste-organisation")
     public String listeOrganisation(Model model) {
+
 
         model.addAttribute("titre", "liste des organisations");
         model.addAttribute("organisations", organisationDAO.findAll());
@@ -34,6 +37,7 @@ public class OrganisationController {
     @GetMapping({"/edit-organisation", "/edit-organisation/{id}"})
     public String editOrganisation(Model model, @PathVariable Optional<Integer> id) {
 
+
         Organisation organisation;
 
         if(id.isPresent()){
@@ -42,8 +46,9 @@ public class OrganisationController {
             organisation = new Organisation();
         }
 
-        model.addAttribute("titre", id.isPresent() ? "Edit organisations" : "Nouvel organisation");
-        model.addAttribute("utilisateurs", utilisateurDAO.findAll());
+        model.addAttribute("titre", id.isPresent() ? "Edit Organisations" : "Nouvel organisation");
+        model.addAttribute("pays", paysDAO.findAll());
+
         model.addAttribute("organisation", organisation);
 
         return "edit-organisation";
@@ -60,7 +65,6 @@ public class OrganisationController {
     @GetMapping("/suppression-organisation/{id}")
     public String delOrganisation(@PathVariable Integer id){
         organisationDAO.deleteById(id);
-
 
         return "redirect:/liste-organisation";
     }

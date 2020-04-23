@@ -59,10 +59,15 @@ public class UtilisateurController {
         return "redirect:/liste-utilisateur";
     }
 
+    @DeleteMapping("suppression-utilisateur/{id}")
+    public String delUtilisateure(@PathVariable Integer id) {
+        utilisateurDAO.deleteById(id);
+        return "redirect:/liste-utilisateur";
+    }
+
     @GetMapping("/suppression-utilisateur/{id}")
     public String delUtilisateur(@PathVariable Integer id){
         utilisateurDAO.deleteById(id);
-
 
         return "redirect:/liste-utilisateur";
     }

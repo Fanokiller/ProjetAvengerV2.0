@@ -1,5 +1,6 @@
 package com.projetjava.appli.controller;
 
+
 import com.projetjava.appli.dao.OrganisationDAO;
 import com.projetjava.appli.dao.PaysDAO;
 import com.projetjava.appli.dao.CivilDAO;
@@ -12,10 +13,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
-public class CivilController {
+    public class CivilController {
 
     @Autowired
     CivilDAO civilDAO;
@@ -46,6 +50,7 @@ public class CivilController {
             civil = new Civil();
         }
 
+
         model.addAttribute("titre", id.isPresent() ? "Edit civils" : "Nouvel civil");
         model.addAttribute("pays", paysDAO.findAll());
         model.addAttribute("organisations", organisationDAO.findAll());
@@ -55,13 +60,13 @@ public class CivilController {
     }
 
     @PostMapping("/edit-civil")
+
     public String editCivil(@ModelAttribute("civil") Civil civil){
 
         civil = civilDAO.saveAndFlush(civil);
 
         return "redirect:/liste-civil";
     }
-
     @GetMapping("/suppression-civil/{id}")
     public String delCivil(@PathVariable Integer id){
         civilDAO.deleteById(id);

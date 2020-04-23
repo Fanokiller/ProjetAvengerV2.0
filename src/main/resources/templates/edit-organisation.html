@@ -6,19 +6,31 @@
 <header th:replace="base :: header">
 </header>
 <body>
-<form th:action="@{/edit-organisation}" th:object="${organisation}" method="post">
+
+
+<form th:action="@{/edit-organisation}" th:object="${organisation}" method="post" class="mx-20">
+
     <fieldset>
 
 
         <input type="hidden" th:field="*{id}">
+
         <div class="form-group">
             <label for="name">Nom</label>
             <input th:field="*{name}" type="text" class="form-control" id="name" placeholder="Nom de l'organisation">
         </div>
+
+        <div class=""form-group>
+            <label for="socialSiege">Siege Social</label>
+            <input th:field="*{socialSiege}" type="text" class="form-control" id="socialSiege" placeholder="Ville du Siege social" >
+        </div>
+
         <div class="form-group">
-            <label for="dirigeant-select">Example select</label>
-            <select class="form-control" id="dirigeant-select" th:field="*{dirigeant}">
-                <option th:each="utilisateur : ${utilisateurs}" th:text="${utilisateur.name} + ' ' + ${utilisateur.nickname}" th:value="${utilisateur.id}"></option>
+            <label for="dirigeant-select">Dirigeant</label>
+
+            <select class="form-control" id="dirigeant-select">
+                <option th:each="organisation : ${organisations}" th:text="${organisation.nom}" th:value="${organisation.id}"></option>
+
             </select>
         </div>
 

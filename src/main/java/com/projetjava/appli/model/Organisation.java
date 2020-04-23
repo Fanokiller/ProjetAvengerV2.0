@@ -10,7 +10,7 @@ import java.util.Set;
 
 @EntityListeners(AuditingEntityListener.class)
 @Entity
-@Table( name = "organistaion")
+@Table( name = "organisation")
 public class Organisation {
 
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY) private int id;

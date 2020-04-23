@@ -8,27 +8,29 @@
 <body>
 
 
-<ul>
-    <li th:each="organisation:${organisations}" th:text="${organisation.name}"></li>
-</ul>
-<ul>
+<div class="Container">
 
-    <li th:each="organisation : ${organisations}">
-        <span th:text="${organisation.name}"></span>
-        <a th:href="'edit-organisation/' + ${organisation.id}" class="badge badge-success">Editer</a>
-        <a th:href="'suppression-organisation/' + ${organisation.id}" class="badge badge-danger">Supprimer</a>
-    </li>
-</ul>
-<div th:each="organisation : ${organisations}" class="d-inline-flex flex-row">
-    <div class="card border-info mb-3" style="max-width: 20rem;">
-        <div th:text="${organisation.name}" class="card-header"></div>
-        <div class="card-body">
-            <h4 class="card-title">Light card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+    <div class="row  ">
+
+        <div th:each="organisation : ${organisations}"class="card col-md-4 border-info flex mr-3 mb-3" style="max-width: 20rem;">
+            <div th:text="${organisation.name}" class="card-header  "></div>
+            <div  class="card-body">
+                <h4 class="card-title">Organisation</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p th:text="${organisation.socialSiege}" class="card-text"></p>
+
+                <a th:href="'edit-organisation/' + ${organisation.id}" class="badge badge-success">Editer</a>
+                <a th:href="'suppression-organisation/' + ${organisation.id}" class="badge badge-danger">Supprimer</a>
+            </div>
         </div>
     </div>
 </div>
-<div><a href="/edit-organisation" type="button" class="btn btn-success">Ajouter un organisation</a></div>
 
+
+
+</div>
+
+<a href="/edit-organisation" type="button" class="btn btn-success">Ajouter une organisation</a>
 </body>
 </html>
