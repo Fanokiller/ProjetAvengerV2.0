@@ -14,14 +14,16 @@
     <div class="row  ">
 
         <div th:each="organisation : ${organisations}"class="card col-md-4 border-info flex mr-3 mb-3" style="max-width: 20rem;">
-            <div th:text="${organisation.name}" class="card-header  "></div>
+            <div class="card-header  ">Organisation  : </div>
             <div  class="card-body">
-                <h4 class="card-title">Organisation</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <p th:text="${organisation.socialSiege}" class="card-text"></p>
+                <h4 th:text="${organisation.name}" class="card-title"></h4>
+                <p>Nom du dirigeant : </p>
 
-                <a th:href="'edit-organisation/' + ${organisation.id}" class="badge badge-success">Editer</a>
-                <a th:href="'suppression-organisation/' + ${organisation.id}" class="badge badge-danger">Supprimer</a>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <div class="d-flex  "> <span> Ville : </span><p th:text="${organisation.socialSiege} " class="card-text"></p></div>
+
+                    <a th:href="'edit-organisation/' + ${organisation.id}" class="badge badge-success">Editer</a>
+                    <a th:href="'suppression-organisation/' + ${organisation.id}" class="badge badge-danger">Supprimer</a>
             </div>
         </div>
     </div>
