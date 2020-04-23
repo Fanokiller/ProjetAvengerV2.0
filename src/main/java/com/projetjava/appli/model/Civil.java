@@ -14,21 +14,21 @@ public class Civil {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String name;
-    private String nickname;
+    protected int id;
+    protected String name;
+    protected String nickname;
     @Temporal(TemporalType.DATE)
-    private Date dateDeces;
+    protected Date dateDeces;
     @Temporal(TemporalType.DATE)
-    private Date dateModif;
+    protected Date dateModif;
     @Temporal(TemporalType.DATE)
-    private Date dateAdd;
+    protected Date dateAdd;
 
     @ManyToMany
-    private List<Organisation> listeOrganisation;
+    protected List<Organisation> listeOrganisation;
 
     @OneToOne
-    private Identification identifiant;
+    protected Identification identifiant;
 
     public List<Organisation> getListeOrganisation() {
         return listeOrganisation;
