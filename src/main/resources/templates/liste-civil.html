@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="base :: head">
+</head>
+<header th:replace="base :: header">
+</header>
+<body>
+<ul>
+    <li th:each="civil : ${civils}">
+        <span th:each="civil:${civils}" th:text="${civil.name} +' '+ ${civil.nickname} +' '+ ${civil.pays.id}"></span>
+        <a th:href="'edit-civil/' + ${civil.id}" class="badge badge-success">Editer</a>
+        <a th:href="'suppression-civil/' + ${civil.id}" class="badge badge-danger">Supprimer</a>
+    </li>
+</ul>
+
+<a href="/edit-civil" type="button" class="btn btn-success">Ajouter un civil</a>
+</body>
+</html>

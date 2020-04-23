@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="base :: head">
+</head>
+<header th:replace="base :: header">
+</header>
+<body>
+<form th:action="@{/edit-organisation}" th:object="${organisation}" method="post">
+    <fieldset>
+
+
+        <input type="hidden" th:field="*{id}">
+        <div class="form-group">
+            <label for="name">Nom</label>
+            <input th:field="*{name}" type="text" class="form-control" id="name" placeholder="Nom de l'organisation">
+        </div>
+        <div class="form-group">
+            <label for="dirigeant-select">Example select</label>
+            <select class="form-control" id="dirigeant-select" th:field="*{dirigeant}">
+                <option th:each="utilisateur : ${utilisateurs}" th:text="${utilisateur.name} + ' ' + ${utilisateur.nickname}" th:value="${utilisateur.id}"></option>
+            </select>
+        </div>
+
+    </fieldset>
+
+    <button type="submit" class="btn btn-primary">
+        <span th:text="${organisation.id == 0} ? 'Ajouter organisation' : 'Modifier organisation'"></span>
+    </button>
+</form>
+</body>
+</html>
