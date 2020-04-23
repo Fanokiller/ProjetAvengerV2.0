@@ -1,7 +1,7 @@
 package com.projetjava.appli.controller;
 
 import com.projetjava.appli.dao.OrganisationDAO;
-import com.projetjava.appli.dao.UtilisateurDAO;
+import com.projetjava.appli.dao.PaysDAO;
 import com.projetjava.appli.model.Organisation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

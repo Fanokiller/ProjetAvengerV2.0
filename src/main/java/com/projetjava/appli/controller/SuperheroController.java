@@ -2,6 +2,7 @@ package com.projetjava.appli.controller;
 
 
 import com.projetjava.appli.dao.CivilDAO;
+import com.projetjava.appli.dao.OrganisationDAO;
 import com.projetjava.appli.dao.SuperHeroDAO;
 import com.projetjava.appli.model.SuperHero;
 import com.projetjava.appli.model.SuperHero;
@@ -23,6 +24,9 @@ public class SuperheroController {
 
     @Autowired
     SuperHeroDAO superHeroDAO;
+
+    @Autowired
+    OrganisationDAO organisationDAO;
 
     @GetMapping("/liste-superhero")
     public String listeSuperhero(Model model) {
