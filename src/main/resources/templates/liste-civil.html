@@ -5,7 +5,14 @@
 <header th:replace="base :: header">
 </header>
 <body>
-<h1 th:text="${titre}"></h1>
-Bonjour
+<ul>
+    <li th:each="civil : ${civils}">
+        <span th:each="civil:${civils}" th:text="${civil.name} +' '+ ${civil.nickname} +' '+ ${civil.pays.id}"></span>
+        <a th:href="'edit-civil/' + ${civil.id}" class="badge badge-success">Editer</a>
+        <a th:href="'suppression-civil/' + ${civil.id}" class="badge badge-danger">Supprimer</a>
+    </li>
+</ul>
+
+<a href="/edit-civil" type="button" class="btn btn-success">Ajouter un civil</a>
 </body>
 </html>

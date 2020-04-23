@@ -9,6 +9,7 @@
 
 
 <form th:action="@{/edit-organisation}" th:object="${organisation}" method="post" class="mx-20">
+
     <fieldset>
 
 
@@ -29,6 +30,7 @@
 
             <select class="form-control" id="dirigeant-select">
                 <option th:each="organisation : ${organisations}" th:text="${organisation.nom}" th:value="${organisation.id}"></option>
+
             </select>
         </div>
 

@@ -14,21 +14,30 @@ public class Civil {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String name;
-    private String nickname;
+    protected int id;
+    protected String name;
+    protected String nickname;
+    protected String heroName;
+    protected String evilName;
     @Temporal(TemporalType.DATE)
-    private Date dateDeces;
+    protected Date dateDeces;
     @Temporal(TemporalType.DATE)
-    private Date dateModif;
+    protected Date dateModif;
     @Temporal(TemporalType.DATE)
-    private Date dateAdd;
+    protected Date dateAdd;
 
     @ManyToMany
-    private List<Organisation> listeOrganisation;
+    @JoinTable(name = "membre_organisation",
+            joinColumns = @JoinColumn(name = "id_civil"), /*mettre id civil*/
+            inverseJoinColumns = @JoinColumn(name = "id_organisation"))
+    protected List<Organisation> listeOrganisation;
+
+    @ManyToOne
+    @JoinColumn(name = "id_pays")
+    protected Pays pays;
 
     @OneToOne
-    private Identification identifiant;
+    protected Identification identifiant;
 
     public List<Organisation> getListeOrganisation() {
         return listeOrganisation;
@@ -39,7 +48,7 @@ public class Civil {
     }
 
     public int getId() {
-           return id;
+        return id;
     }
 
     public void setId(int id) {
@@ -60,6 +69,22 @@ public class Civil {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public String getHeroName() {
+        return heroName;
+    }
+
+    public void setHeroName(String heroName) {
+        this.heroName = heroName;
+    }
+
+    public String getEvilName() {
+        return evilName;
+    }
+
+    public void setEvilName(String evilName) {
+        this.evilName = evilName;
     }
 
     public Date getDateDeces() {
@@ -84,5 +109,21 @@ public class Civil {
 
     public void setDateAdd(Date dateAdd) {
         this.dateAdd = dateAdd;
+    }
+
+    public Pays getPays() {
+        return pays;
+    }
+
+    public void setPays(Pays pays) {
+        this.pays = pays;
+    }
+
+    public Identification getIdentifiant() {
+        return identifiant;
+    }
+
+    public void setIdentifiant(Identification identifiant) {
+        this.identifiant = identifiant;
     }
 }

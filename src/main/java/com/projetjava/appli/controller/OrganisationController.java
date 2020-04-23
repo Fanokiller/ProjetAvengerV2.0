@@ -1,15 +1,15 @@
 package com.projetjava.appli.controller;
 
-
 import com.projetjava.appli.dao.OrganisationDAO;
-import com.projetjava.appli.dao.PaysDAO;
-
+import com.projetjava.appli.dao.UtilisateurDAO;
 import com.projetjava.appli.model.Organisation;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Optional;
 
@@ -20,19 +20,23 @@ public class OrganisationController {
     OrganisationDAO organisationDAO;
 
     @Autowired
+
     PaysDAO paysDAO;
+
 
     @GetMapping("/liste-organisation")
     public String listeOrganisation(Model model) {
 
-        model.addAttribute("titre", "liste des organisation");
+
+        model.addAttribute("titre", "liste des organisations");
         model.addAttribute("organisations", organisationDAO.findAll());
 
-        return "liste-Organisation";
+        return "liste-organisation";
     }
 
     @GetMapping({"/edit-organisation", "/edit-organisation/{id}"})
-    public String editOrganisation(Model model, @PathVariable Optional <Integer> id) {
+    public String editOrganisation(Model model, @PathVariable Optional<Integer> id) {
+
 
         Organisation organisation;
 
@@ -44,6 +48,7 @@ public class OrganisationController {
 
         model.addAttribute("titre", id.isPresent() ? "Edit Organisations" : "Nouvel organisation");
         model.addAttribute("pays", paysDAO.findAll());
+
         model.addAttribute("organisation", organisation);
 
         return "edit-organisation";
@@ -57,9 +62,10 @@ public class OrganisationController {
         return "redirect:/liste-organisation";
     }
 
-    @GetMapping("suppression-organisation/{id}")
-    public String delOrganisation(@PathVariable Integer id) {
+    @GetMapping("/suppression-organisation/{id}")
+    public String delOrganisation(@PathVariable Integer id){
         organisationDAO.deleteById(id);
+
         return "redirect:/liste-organisation";
     }
 }
