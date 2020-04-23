@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="base :: head">
+</head>
+<header th:replace="base :: header">
+</header>
+<body>
+
+<li th:each="superevil : ${superevils}">
+    <span th:text="${superevil.heroName}"></span>
+    <a th:href="'edit-superevil/' + ${superevil.id}" class="badge badge-success">Editer</a>
+    <a th:href="'suppression-superevil/' + ${superevil.id}" class="badge badge-danger">Supprimer</a>
+</li>
+</ul>
+
+<a href="/edit-superevil" type="button" class="btn btn-success">Ajouter un superevil</a>
+</body>
+</html>
