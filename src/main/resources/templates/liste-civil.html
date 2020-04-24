@@ -1,38 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head th:replace="base :: head">
 </head>
 <header th:replace="base :: header">
 </header>
 <body>
-
-<div class="table-responsive-sm">
-    <table class="table">
-
-        <thead class="thead-dark">
-        <tr>
-            <th  scope="col">#</th>
-            <th scope="col">Prenom</th>
-            <th scope="col">Nom</th>
-            <th scope="col">Edition</th>
-            <th scope="col">Suppression</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="civil : ${civils}">
-            <th scope="row"></th>
-            <td  th:text="${civil.nickname} "></td>
-            <td th:text="${civil.name} "></td>
-            <td><a th:href="'edit-civil/' + ${civil.id}" class="badge badge-success">Editer</a></td>
-            <td><a th:href="'suppression-civil/' + ${civil.id}" class="badge badge-danger">Supprimer</a></td>
-        </tr>
-
-        </tbody>
-
-
-
-    </table>
-</div>
+<ul>
+    <li th:each="civil : ${civils}">
+        <span th:text="${civil.name} +' '+ ${civil.nickname} + ' ' + ${civil.heroName}"></span>
+        <a th:href="'edit-civil/' + ${civil.id}" class="badge badge-success">Editer</a>
+        <a th:href="'suppression-civil/' + ${civil.id}" class="badge badge-danger">Supprimer</a>
+    </li>
+</ul>
 
 <a href="/edit-civil" type="button" class="btn btn-success">Ajouter un civil</a>
 </body>
