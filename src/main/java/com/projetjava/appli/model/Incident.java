@@ -7,6 +7,7 @@ import java.util.Date;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
+@Table( name = "incident")
 public class Incident {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
