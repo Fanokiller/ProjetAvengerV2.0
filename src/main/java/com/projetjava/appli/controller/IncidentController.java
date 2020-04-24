@@ -1,7 +1,6 @@
 package com.projetjava.appli.controller;
 import com.projetjava.appli.dao.*;
-import com.projetjava.appli.model.Incident;
-import com.projetjava.appli.model.Organisation;
+import com.projetjava.appli.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,6 +34,10 @@ public class IncidentController {
 
     NatureDAO natureDAO;
 
+    @Autowired
+
+    IdentificationDAO identificationDAO;
+
 
 
 
@@ -51,8 +54,11 @@ public class IncidentController {
     @GetMapping({"/edit-incident", "/edit-incident /{id}"})
     public String editIncident(Model model, @PathVariable Optional<Integer> id) {
 
-
+        Information information;
         Incident incident;
+        Organisation organisation;
+        Nature nature;
+        Identification identification;
 
         if(id.isPresent()){
             incident = incidentDAO.findById(id.get()).orElse(null);
@@ -65,6 +71,8 @@ public class IncidentController {
         model.addAttribute("civil", civilDAO.findAll());
         model.addAttribute("informations", informationDAO.findAll());
         model.addAttribute("organisations", organisationDAO.findAll());
+        model.addAttribute("nature", natureDAO.findAll());
+        model.addAttribute("identification",identificationDAO.findAll());
 
 
         return "edit-incident";
