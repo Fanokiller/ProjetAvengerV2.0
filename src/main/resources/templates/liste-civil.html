@@ -8,7 +8,7 @@
 <body>
 <ul>
     <li th:each="civil : ${civils}">
-        <span th:each="civil:${civils}" th:text="${civil.name} +' '+ ${civil.nickname} +' '+ ${civil.pays.id}"></span>
+        <span th:text="${civil.name} +' '+ ${civil.nickname} + ' ' + ${civil.heroName}"></span>
         <a th:href="'edit-civil/' + ${civil.id}" class="badge badge-success">Editer</a>
         <a th:href="'suppression-civil/' + ${civil.id}" class="badge badge-danger">Supprimer</a>
     </li>
