@@ -36,6 +36,7 @@ import java.util.Optional;
         model.addAttribute("titre", "liste des civils");
         model.addAttribute("civils", civilDAO.findAll());
 
+
         return "liste-civil";
     }
 
