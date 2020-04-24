@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="base :: head">
+</head>
+<header th:replace="base :: header">
+</header>
+<body>
+
+<li th:each="mission : ${missions}">
+    <span th:text="${mission.name}"></span>
+    <a th:href="'edit-mission/' + ${mission.id}" class="badge badge-success">Editer</a>
+    <a th:href="'suppression-mission/' + ${mission.id}" class="badge badge-danger">Supprimer</a>
+</li>
+</ul>
+
+<a href="/edit-mission" type="button" class="btn btn-success">Ajouter une mission</a>
+</body>
+</html>

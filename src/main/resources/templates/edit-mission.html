@@ -6,18 +6,14 @@
 <header th:replace="base :: header">
 </header>
 <body>
-<form th:action="@{/edit-superevil}" th:object="${superevil}" method="post">
+<form th:action="@{/edit-mission}" th:object="${mission}" method="post">
     <fieldset>
         <legend><font style = "vertical-align: inherit;"> Formulaire </font></legend>
         <input type="hidden" th:field="*{id}">
         <div class="form-row d-flex justify-content-center">
             <div class="form-group col-md- mb-3 w-25 p-3">
-                <label for="name">Evils's name</label>
-                <input th:field="*{name}" type="text" class="form-control" id="name" placeholder="Nom du Supervilain">
-            </div>
-            <div class="col-md- mb-3 w-25 p-3">
-                <label for="nickname">Evil's nickname</label>
-                <input type="text" class="form-control" id="nickname" placeholder="Prenom du Supervilain" value="Otto" required>
+                <label for="name">Mission's name</label>
+                <input th:field="*{name}" type="text" class="form-control" id="name" placeholder="Nom de la mission">
             </div>
         </div>
         <div class="form-row d-flex justify-content-center">
@@ -30,16 +26,6 @@
             </div>
         </div>
         <div class="form-row d-flex justify-content-center">
-            <div class = "form-group col-md- w-25 p-3">
-                <label for = "exampleTextarea"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Pouvoir </font> </font> </label >
-                <textarea class = "form-control" id = "Textarea" rows = "3"> </textarea>
-            </div>
-            <div class = "form-group col-md- w-25 p-3">
-                <label for = "exampleTextarea"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Point Faible  </font> </font> </label >
-                <textarea class = "form-control" id = "exampleTextarea" rows = "3"> </textarea>
-            </div>
-        </div>
-        <div class="form-row d-flex justify-content-center">
             <div class = "form-group col-md- mb-3 w-25 p-3">
                 <label for = "exampleInputFile"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Entrez un fichier image </font> </font> </label>
                 <input type = "file" class = "form-control-file" id = "exampleInputFile" aria-descriptionsby = "fileHelp">
@@ -49,7 +35,7 @@
     </fieldset>
     <div class="form-row d-flex justify-content-center">
         <button type="submit" class="btn btn-primary">
-            <span th:text="${superevil.id == 0} ? 'Ajouter superevil' : 'Modifier superevil'"></span>
+            <span th:text="${mission.id == 0} ? 'Ajouter mission' : 'Modifier mission'"></span>
         </button>
     </div>
 </form>

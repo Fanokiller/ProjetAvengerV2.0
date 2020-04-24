@@ -1,9 +1,9 @@
 package com.projetjava.appli.dao;
 
-import com.projetjava.appli.model.Missions;
+import com.projetjava.appli.model.Mission;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MissionsDAO extends JpaRepository<Missions, Integer> {
+public interface MissionDAO extends JpaRepository<Mission, Integer> {
 }
