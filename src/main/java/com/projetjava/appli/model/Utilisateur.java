@@ -29,7 +29,7 @@ public class Utilisateur {
     @JoinColumn(name = "id_pays")
     private Pays pays;
 
-    @ManyToMany
+    /*@ManyToMany
     @JoinTable(name = "membre_organisation",
             joinColumns = @JoinColumn(name = "id_utilisateur"), //mettre id civil
             inverseJoinColumns = @JoinColumn(name = "id_organisation"))
@@ -41,7 +41,7 @@ public class Utilisateur {
 
     public void setListeOrganisation(List<Organisation> listeOrganisation) {
         this.listeOrganisation = listeOrganisation;
-    }
+    }*/
 
     public Utilisateur(){
     }

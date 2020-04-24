@@ -11,5 +11,13 @@ import java.util.Date;
 @Table( name = "superhero")
 public class SuperHero extends Civil{
 
+    protected String heroName;
 
+    public String getHeroName() {
+        return heroName;
+    }
+
+    public void setHeroName(String heroName) {
+        this.heroName = heroName;
+    }
 }

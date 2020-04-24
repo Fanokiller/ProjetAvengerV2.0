@@ -17,8 +17,6 @@ public class Civil {
     protected int id;
     protected String name;
     protected String nickname;
-    protected String heroName;
-    protected String evilName;
     @Temporal(TemporalType.DATE)
     protected Date dateDeces;
     @Temporal(TemporalType.DATE)
@@ -28,7 +26,7 @@ public class Civil {
 
     @ManyToMany
     @JoinTable(name = "membre_organisation",
-            joinColumns = @JoinColumn(name = "id_civil"), /*mettre id civil*/
+            joinColumns = @JoinColumn(name = "id_civil"),
             inverseJoinColumns = @JoinColumn(name = "id_organisation"))
     protected List<Organisation> listeOrganisation;
 
@@ -69,22 +67,6 @@ public class Civil {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
-    }
-
-    public String getHeroName() {
-        return heroName;
-    }
-
-    public void setHeroName(String heroName) {
-        this.heroName = heroName;
-    }
-
-    public String getEvilName() {
-        return evilName;
-    }
-
-    public void setEvilName(String evilName) {
-        this.evilName = evilName;
     }
 
     public Date getDateDeces() {

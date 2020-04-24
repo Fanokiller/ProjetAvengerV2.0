@@ -23,6 +23,9 @@ public class Identification {
     @OneToOne (mappedBy = "identifiant")
     private Organisation identifiantOrganisation;
 
+    @OneToOne (mappedBy = "role")
+    private Role listeRole;
+
     public Civil getIdentifiantCivil() {
         return identifiantCivil;
     }
@@ -37,6 +40,14 @@ public class Identification {
 
     public void setIdentifiantOrganisation(Organisation identifiantOrganisation) {
         this.identifiantOrganisation = identifiantOrganisation;
+    }
+
+    public Role getListeRole() {
+        return listeRole;
+    }
+
+    public void setListeRole(Role listeRole) {
+        this.listeRole = listeRole;
     }
 
     public int getId() {
