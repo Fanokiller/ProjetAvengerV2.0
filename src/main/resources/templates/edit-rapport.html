@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="base :: head">
+</head>
+<header th:replace="base :: header">
+</header>
+<body>
+
+
+<form th:action="@{/edit-rapport}" th:object="${rapport}" method="post" class="mx-20">
+
+    <fieldset>
+
+
+        <input type="hidden" th:field="*{id}">
+
+        <div class="form-group">
+            <label for="damage">Dommage</label>
+            <input th:field="*{damage}" type="text" class="form-control" id="damage" placeholder="Nom du rapport">
+        </div>
+
+
+
+    </fieldset>
+
+    <button type="submit" class="btn btn-primary">
+        <span th:text="${rapport.id == 0} ? 'Ajouter rapport' : 'Modifier rapport'"></span>
+    </button>
+</form>
+</body>
+</html>
