@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="base :: head">
+</head>
+<header th:replace="base :: header">
+</header>
+<body>
+
+
+<form th:action="@{/edit-survey}" th:object="${survey}" method="post" class="mx-20">
+
+    <fieldset>
+
+
+        <input type="hidden" th:field="*{id}">
+
+        <div class="form-group">
+            <label for="id">Dommage</label>
+            <input th:field="*{id}" type="text" class="form-control" id="id" placeholder="Questionnaire">
+        </div>
+
+
+
+    </fieldset>
+
+    <button type="submit" class="btn btn-primary">
+        <span th:text="${survey.id == 0} ? 'Ajouter survey' : 'Modifier survey'"></span>
+    </button>
+</form>
+</body>
+</html>
