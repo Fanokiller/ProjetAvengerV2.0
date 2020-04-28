@@ -16,6 +16,10 @@ public class Organisation {
     private String name;
     private String socialSiege;
 
+    @OneToOne
+    @JoinColumn(name = "id_pays")
+    protected Pays pays;
+
     @ManyToOne
     private Civil dirigeant;
 
@@ -34,28 +38,40 @@ public class Organisation {
     }
 
 
+    public Pays getPays() {
+        return pays;
+    }
+
+    public void setPays(Pays pays) {
+        this.pays = pays;
+    }
 
     public List<Civil> getListeMembre() {
         return listeMembre;
     }
 
     public void setListeMembre(List<Civil> listeMembre) {
+
         this.listeMembre = listeMembre;
     }
 
     public int getId() {
+
         return id;
     }
 
     public void setId(int id) {
+
         this.id = id;
     }
 
     public String getName() {
+
         return name;
     }
 
     public void setName(String name) {
+
         this.name = name;
     }
 

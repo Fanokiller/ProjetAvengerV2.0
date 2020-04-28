@@ -18,10 +18,11 @@
             <label for="dateIncident">Date de l'incident : </label>
             <input th:field="*{dateIncident}" type="date" class="form-control" id="dateIncident" placeholder="Date de l'incident">
         </div>
-
-    <button type="submit" class="btn btn-primary">
-        <span th:text="${incident.id == 0} ? 'Ajouter incident' : 'Modifier incident'"></span>
-    </button>
+        <div class="form-row d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">
+            <span th:text="${incident.id == 0} ? 'Ajouter incident' : 'Modifier incident'"></span>
+            </button>
+        </div>
     </fieldset>
 </form>
 

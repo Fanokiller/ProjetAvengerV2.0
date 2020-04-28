@@ -11,41 +11,48 @@
 
 
         <input type="hidden" th:field="*{id}">
-        <div class="form-group">
-            <label for="nickname">Prénom</label>
-            <input th:field="*{nickname}" type="text" class="form-control" id="nickname" placeholder="Prénom de l'utilisateur">
+        <div class="form-row d-flex justify-content-center">
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="nickname">Prénom</label>
+                <input th:field="*{nickname}" type="text" class="form-control" id="nickname" placeholder="Prénom de l'utilisateur">
+            </div>
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="name">Nom</label>
+                <input th:field="*{name}" type="text" class="form-control" id="name" placeholder="Nom de l'utilisateur">
+            </div>
         </div>
-        <div class="form-group">
-            <label for="name">Nom</label>
-            <input th:field="*{name}" type="text" class="form-control" id="name" placeholder="Nom de l'utilisateur">
+        <div class="form-row d-flex justify-content-center">
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="role">Role</label>
+                <input th:field="*{role}" type="text" class="form-control" id="role" placeholder="Role de l'utilisateur">
+            </div>
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="password">Password</label>
+                <input th:field="*{password}" type="password" class="form-control" id="password" placeholder="Mot de passe utilisateur" aria-describedby="aide-mot-de-passe">
+                <small id="aide-mot-de-passe" class="form-text text-muted">Utiliser un mot de passe compliqué</small>
+            </div>
         </div>
-        <div class="form-group">
-        <label for="role">Role</label>
-        <input th:field="*{role}" type="text" class="form-control" id="role" placeholder="Role de l'utilisateur">
-    </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input th:field="*{password}" type="password" class="form-control" id="password" placeholder="Mot de passe utilisateur" aria-describedby="aide-mot-de-passe">
-            <small id="aide-mot-de-passe" class="form-text text-muted">Utiliser un mot de passe compliqué</small>
-        </div>
-        <div class="form-group">
-            <label for="organisation-select">Organisation</label>
-            <select class="form-control" id="organisation-select" th:field="*{listeOrganisation}" multiple>
-                <option th:each="organisation : ${organisations}" th:text="${organisation.name}" th:value="${organisation.id}"></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="pays-select">Pays</label>
-            <select class="form-control" id="pays-select" th:field="*{pays}">
-                <option th:each="p : ${pays}" th:text="${p.nom}" th:value="${p.id}"></option>
-            </select>
+        <div class="form-row d-flex justify-content-center">
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="organisation-select">Organisation</label>
+                <select class="form-control" id="organisation-select" th:field="*{listeOrganisation}">
+                    <option th:each="organisation : ${organisations}" th:text="${organisation.name}" th:value="${organisation.id}"></option>
+                </select>
+            </div>
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="pays-select">Pays</label>
+                <select class="form-control" id="pays-select" th:field="*{pays}">
+                    <option th:each="p : ${pays}" th:text="${p.nom}" th:value="${p.id}"></option>
+                </select>
+            </div>
         </div>
 
     </fieldset>
-
-    <button type="submit" class="btn btn-primary">
-        <span th:text="${utilisateur.id == 0} ? 'Ajouter utilisateur' : 'Modifier utilisateur'"></span>
-    </button>
+    <div class="form-row d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary">
+            <span th:text="${utilisateur.id == 0} ? 'Ajouter utilisateur' : 'Modifier utilisateur'"></span>
+        </button>
+    </div>
 </form>
 </body>
 </html>
