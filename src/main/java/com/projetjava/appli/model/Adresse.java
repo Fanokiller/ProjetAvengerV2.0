@@ -8,10 +8,14 @@ import javax.persistence.*;
 @Entity
 @Table( name = "adresse")
 public class Adresse {
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) int id;
     private int postalNumber;
     private String street;
     private int number;
+
+    @ManyToOne
+    @JoinColumn (name = "id_civil")
 
     public int getId() {
         return id;
