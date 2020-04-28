@@ -19,17 +19,44 @@ public class Incident {
 
     private Date dateIncident;
     private String adresse;
+    private boolean presenceSuperEvil;
+    private int nbrCivilPresent;
 
-    @ManyToMany
-    private List<Nature> listeNature;
+    @ManyToOne
+    @JoinColumn(name = "id_nature")
+    private Nature nature;
+    //
 
-    private List<Nature> getListeNature() {
-        return listeNature;
+    public Nature getNature() {
+        return nature;
     }
 
-    public void setListeNature(List<Nature> listeNature) {
-        this.listeNature = listeNature;
+    public void setNature(Nature nature) {
+        this.nature = nature;
     }
+
+
+
+
+    public boolean isPresenceSuperEvil() {
+        return presenceSuperEvil;
+    }
+
+    public void setPresenceSuperEvil(boolean presenceSuperEvil) {
+        this.presenceSuperEvil = presenceSuperEvil;
+    }
+
+    public int getNbrCivilPresent() {
+        return nbrCivilPresent;
+    }
+
+    public void setNbrCivilPresent(int nbrCivilPresent) {
+        this.nbrCivilPresent = nbrCivilPresent;
+    }
+
+
+
+
 
 
     public int getId() {

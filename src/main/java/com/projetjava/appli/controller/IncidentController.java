@@ -27,11 +27,6 @@ public class IncidentController {
     OrganisationDAO organisationDAO;
 
     @Autowired
-
-    InformationDAO informationDAO;
-
-    @Autowired
-
     NatureDAO natureDAO;
 
     @Autowired
@@ -47,6 +42,7 @@ public class IncidentController {
 
         model.addAttribute("titre", "liste des incident");
         model.addAttribute("incidents", incidentDAO.findAll());
+        model.addAttribute("natures", natureDAO.findAll());
 
         return "liste-incident";
     }
@@ -54,10 +50,11 @@ public class IncidentController {
     @GetMapping({"/edit-incident", "/edit-incident /{id}"})
     public String editIncident(Model model, @PathVariable Optional<Integer> id) {
 
-        Information information;
+
         Incident incident;
         Organisation organisation;
         Nature nature;
+
         Identification identification;
 
         if(id.isPresent()){
@@ -69,7 +66,6 @@ public class IncidentController {
         model.addAttribute("titre", id.isPresent() ? "Edit Incidents" : "Nouvel incident");
         model.addAttribute("incident",incident);
         model.addAttribute("civil", civilDAO.findAll());
-        model.addAttribute("informations", informationDAO.findAll());
         model.addAttribute("organisations", organisationDAO.findAll());
         model.addAttribute("nature", natureDAO.findAll());
         model.addAttribute("identification",identificationDAO.findAll());

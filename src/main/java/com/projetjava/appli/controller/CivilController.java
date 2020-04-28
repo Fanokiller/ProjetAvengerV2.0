@@ -1,10 +1,12 @@
 package com.projetjava.appli.controller;
 
 
+import com.projetjava.appli.dao.IdentificationDAO;
 import com.projetjava.appli.dao.OrganisationDAO;
 import com.projetjava.appli.dao.PaysDAO;
 import com.projetjava.appli.dao.CivilDAO;
 import com.projetjava.appli.model.Civil;
+import com.projetjava.appli.model.Identification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +24,10 @@ import java.util.Optional;
     public class CivilController {
 
     @Autowired
+    IdentificationDAO identificationDAO;
+
+
+    @Autowired
     CivilDAO civilDAO;
 
     @Autowired
@@ -35,6 +41,7 @@ import java.util.Optional;
 
         model.addAttribute("titre", "liste des civils");
         model.addAttribute("civils", civilDAO.findAll());
+        model.addAttribute("pays",paysDAO.findAll());
 
 
         return "liste-civil";
@@ -44,6 +51,7 @@ import java.util.Optional;
     public String editCivil(Model model, @PathVariable Optional <Integer> id) {
 
         Civil civil;
+        Identification identification;
 
         if(id.isPresent()){
             civil = civilDAO.findById(id.get()).orElse(null);
@@ -56,6 +64,8 @@ import java.util.Optional;
         model.addAttribute("pays", paysDAO.findAll());
         model.addAttribute("organisations", organisationDAO.findAll());
         model.addAttribute("civil", civil);
+        model.addAttribute("identification", identificationDAO.findAll());
+
 
         return "edit-civil";
     }
