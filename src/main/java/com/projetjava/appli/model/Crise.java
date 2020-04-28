@@ -13,6 +13,13 @@ public class Crise {
     private int id;
     private String type;
 
+    @OneToMany
+    //Incident
+
+    @OneToOne
+    //Gravité
+    //Missions
+
     public int getId() {
         return id;
     }

@@ -13,6 +13,10 @@ public class Ability {
     @GeneratedValue(strategy = GenerationType.IDENTITY) private int id;
     private String name;
 
+    @ManyToOne
+    @JoinColumn (name = "id_superhero")
+    @JoinColumn (name = "id_superevil")
+
     public int getId() {
         return id;
     }

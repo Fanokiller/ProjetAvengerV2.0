@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="base :: head">
+</head>
+<header th:replace="base :: header">
+</header>
+<body>
+
+<li th:each="survey : ${surveys}">
+    <span th:text="${survey.event}"></span>
+    <a th:href="'edit-survey/' + ${survey.id}" class="badge badge-success">Editer</a>
+    <a th:href="'suppression-survey/' + ${survey.id}" class="badge badge-danger">Supprimer</a>
+</li>
+</ul>
+<a href="/edit-rapport" type="button" class="btn btn-success">Ajouter un questionnaire</a>
+</body>
+</html>

@@ -27,6 +27,35 @@
             </div>
         </div>
     </div>
+    <div class="table-responsive-sm align-items-center">
+        <table class="table">
+
+            <thead class="thead-dark">
+            <tr>
+                <th  scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Siège social</th>
+                <th scope="col">Edition</th>
+                <th scope="col">Suppression</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="organisation : ${organisations}" >
+                <th scope="row"></th>
+                <td th:text="${organisation.name}" ></td>
+                <td th:text="${organisation.socialSiege"></td>
+
+                <td><a th:href="'edit-organisation/' + ${organisation.id}" class="badge badge-success">Editer</a></td>
+                <td><a th:href="'suppression-organisation/' + ${organisation.id}" class="badge badge-danger">Supprimer</a></td>
+            </tr>
+
+            </tbody>
+
+
+
+        </table>
+    </div>
 </div>
 
 
