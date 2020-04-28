@@ -21,6 +21,25 @@ public class Civil extends Utilisateur{
     protected Date dateModif;
     @Temporal(TemporalType.DATE)
     protected Date dateAdd;
+    private Date dateNaissance;
+
+    public Date getDateNaissance() {
+        return dateNaissance;
+    }
+
+    public void setDateNaissance(Date dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    private String role;
 
     @ManyToMany
     @JoinTable(name = "membre_organisation",
@@ -28,12 +47,16 @@ public class Civil extends Utilisateur{
             inverseJoinColumns = @JoinColumn(name = "id_organisation"))
     protected List<Organisation> listeOrganisation;
 
+
+
+
     @ManyToOne
     @JoinColumn(name = "id_pays")
-    protected Pays pays;
+    private Pays pays;
 
     @OneToOne
-    protected Identification identifiant;
+    @JoinColumn(name = "id_identification")
+    private Identification identification;
 
     public List<Organisation> getListeOrganisation() {
         return listeOrganisation;
@@ -108,10 +131,10 @@ public class Civil extends Utilisateur{
     }
 
     public Identification getIdentifiant() {
-        return identifiant;
+        return identification;
     }
 
     public void setIdentifiant(Identification identifiant) {
-        this.identifiant = identifiant;
+        this.identification = identifiant;
     }
 }
