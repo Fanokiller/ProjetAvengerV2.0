@@ -6,7 +6,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 
-
+@Table(name = "identification")
 @EntityListeners(AuditingEntityListener.class)
 @Entity
 public class Identification {
@@ -16,12 +16,27 @@ public class Identification {
     private int id;
     private String email;
     private String password;
+    private boolean isAdmin;
 
-    @OneToOne (mappedBy = "identifiant")
+
+
+
+
+
+
+    @OneToOne (mappedBy = "identification")
     private Civil identifiantCivil;
 
     @OneToOne (mappedBy = "identifiant")
     private Organisation identifiantOrganisation;
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
 
     public Civil getIdentifiantCivil() {
         return identifiantCivil;

@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "nature")
 @EntityListeners(AuditingEntityListener.class)
 public class Nature {
 
@@ -14,8 +15,7 @@ public class Nature {
     private int id;
     private String name;
 
-    @ManyToMany(mappedBy = "listeNature")
-    private List<Information> listeInformation;
+
 
     public int getId() {
         return id;
@@ -33,11 +33,5 @@ public class Nature {
         this.name = name;
     }
 
-    public List<Information> getListeInformation() {
-        return listeInformation;
-    }
 
-    public void setListeInformation(List<Information> listeInformation) {
-        this.listeInformation = listeInformation;
-    }
 }
