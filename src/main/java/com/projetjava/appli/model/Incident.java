@@ -16,7 +16,6 @@ public class Incident {
     private int id;
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-
     private Date dateIncident;
     private String adresse;
 

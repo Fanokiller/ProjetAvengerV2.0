@@ -8,13 +8,9 @@ import java.util.Date;
 @Inheritance(strategy = InheritanceType.JOINED)
 @EntityListeners(AuditingEntityListener.class)
 @Entity
-@Table(name = "civil")
-public class Civil {
 
+public class Civil extends Utilisateur{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected int id;
     protected String name;
     protected String nickname;
     protected String heroName;
@@ -28,7 +24,7 @@ public class Civil {
 
     @ManyToMany
     @JoinTable(name = "membre_organisation",
-            joinColumns = @JoinColumn(name = "id_civil"), /*mettre id civil*/
+            joinColumns = @JoinColumn(name = "id_civil"),
             inverseJoinColumns = @JoinColumn(name = "id_organisation"))
     protected List<Organisation> listeOrganisation;
 
@@ -45,14 +41,6 @@ public class Civil {
 
     public void setListeOrganisation(List<Organisation> listeOrganisation) {
         this.listeOrganisation = listeOrganisation;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
