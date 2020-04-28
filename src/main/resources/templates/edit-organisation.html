@@ -14,31 +14,37 @@
 
 
         <input type="hidden" th:field="*{id}">
-
-        <div class="form-group">
-            <label for="name">Nom</label>
-            <input th:field="*{name}" type="text" class="form-control" id="name" placeholder="Nom de l'organisation">
+        <div class="form-row d-flex justify-content-center">
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="name">Nom de l'organisation</label>
+                <input th:field="*{name}" type="text" class="form-control" id="name" placeholder="Nom de l'organisation">
+            </div>
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="dirigeant-select">Dirigeant</label>
+                <select class="form-control" id="dirigeant-select">
+                    <option th:each="organisation : ${organisations}" th:text="${organisation.nom}" th:value="${organisation.id}"></option>
+                </select>
+            </div>
         </div>
-
-        <div class=""form-group>
-            <label for="socialSiege">Siege Social</label>
-            <input th:field="*{socialSiege}" type="text" class="form-control" id="socialSiege" placeholder="Ville du Siege social" >
+        <div class="form-row d-flex justify-content-center">
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="socialSiege">Siege Social</label>
+                <input th:field="*{socialSiege}" type="text" class="form-control" id="socialSiege" placeholder="Ville du Siege social" >
+            </div>
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="pays-select">Pays</label>
+                <select class="form-control" id="pays-select" th:field="*{pays}">
+                    <option th:each="p : ${pays}" th:text="${p.nom}" th:value="${p.id}"></option>
+                </select>
+            </div>
         </div>
-
-        <div class="form-group">
-            <label for="dirigeant-select">Dirigeant</label>
-
-            <select class="form-control" id="dirigeant-select">
-                <option th:each="organisation : ${organisations}" th:text="${organisation.nom}" th:value="${organisation.id}"></option>
-
-            </select>
-        </div>
-
     </fieldset>
 
-    <button type="submit" class="btn btn-primary">
-        <span th:text="${organisation.id == 0} ? 'Ajouter organisation' : 'Modifier organisation'"></span>
-    </button>
+    <div class="form-row d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary">
+            <span th:text="${organisation.id == 0} ? 'Ajouter organisation' : 'Modifier organisation'"></span>
+        </button>
+    </div>
 </form>
 </body>
 </html>

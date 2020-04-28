@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="base :: head">
+</head>
+<header th:replace="base :: header">
+</header>
+<body>
+
+<li th:each="litige : ${litiges}">
+    <span th:text="${litige.type}"></span>
+    <a th:href="'edit-litige/' + ${litige.id}" class="badge badge-success">Editer</a>
+    <a th:href="'suppression-litige/' + ${litige.id}" class="badge badge-danger">Supprimer</a>
+</li>
+</ul>
+
+<a href="/edit-litige" type="button" class="btn btn-success">Ajouter une litige</a>
+</body>
+</html>

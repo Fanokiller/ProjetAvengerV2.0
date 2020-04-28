@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="base :: head">
+</head>
+<header th:replace="base :: header">
+</header>
+<body>
+<form th:action="@{/edit-mission}" th:object="${mission}" method="post">
+    <fieldset>
+        <legend><font style = "vertical-align: inherit;"> Formulaire </font></legend>
+        <input type="hidden" th:field="*{id}">
+        <div class="form-row d-flex justify-content-center">
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="name">Mission's name</label>
+                <input th:field="*{name}" type="text" class="form-control" id="name" placeholder="Nom de la mission">
+            </div>
+        </div>
+        <div class="form-row d-flex justify-content-center">
+            <div class="form-group col-md- w-50 p-3">
+                <label for="inputState">State</label>
+                <select id="inputState" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row d-flex justify-content-center">
+            <div class = "form-group col-md- mb-3 w-25 p-3">
+                <label for = "exampleInputFile"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Entrez un fichier image </font> </font> </label>
+                <input type = "file" class = "form-control-file" id = "exampleInputFile" aria-descriptionsby = "fileHelp">
+                <small id = "fileHelp" class = "form-text text-muted"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Il s'agit d ' un texte d'aide au niveau du bloc d'espace réservé pour l'entrée ci-dessus. </font> <font style = "vertical-align: inherit;"> Il est un peu plus léger et s'adapte facilement à une nouvelle ligne. </font> </font> </small>
+            </div>
+        </div>
+    </fieldset>
+    <div class="form-row d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary">
+            <span th:text="${mission.id == 0} ? 'Ajouter mission' : 'Modifier mission'"></span>
+        </button>
+    </div>
+</form>
+</body>
+</html>

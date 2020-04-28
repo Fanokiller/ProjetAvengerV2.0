@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="base :: head">
+</head>
+<header th:replace="base :: header">
+</header>
+<body>
+
+
+<form th:action="@{/edit-litige}" th:object="${litige}" method="post" class="mx-20">
+
+    <fieldset>
+
+
+        <input type="hidden" th:field="*{id}">
+
+        <div class="form-group">
+            <label for="id">Dommage</label>
+            <input th:field="*{id}" type="text" class="form-control" id="id" placeholder="Nom du litige">
+        </div>
+        <div class="form-group">
+            <label for="type">Type de litige</label>
+            <input th:field="*{type}" type="text" class="form-control" id="type" placeholder="type de litige">
+        </div>
+
+
+
+    </fieldset>
+
+    <button type="submit" class="btn btn-primary">
+        <span th:text="${litige.id == 0} ? 'Ajouter litige' : 'Modifier litige'"></span>
+    </button>
+</form>
+</body>
+</htmtml>l>

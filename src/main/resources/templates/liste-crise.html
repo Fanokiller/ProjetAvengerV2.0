@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="base :: head">
+</head>
+<header th:replace="base :: header">
+</header>
+<body>
+
+<li th:each="crise : ${crises}">
+    <span th:text="${crise.type}"></span>
+    <a th:href="'edit-crise/' + ${crise.id}" class="badge badge-success">Editer</a>
+    <a th:href="'suppression-crise/' + ${crise.id}" class="badge badge-danger">Supprimer</a>
+</li>
+</ul>
+
+<a href="/edit-crise" type="button" class="btn btn-success">Ajouter une crise</a>
+</body>
+</html>

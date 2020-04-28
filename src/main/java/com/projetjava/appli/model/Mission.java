@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-public class Missions {
+public class Mission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="base :: head">
+</head>
+<header th:replace="base :: header">
+</header>
+
+<body>
+<form th:action="@{/edit-incident}" th:object="${incident}" method="post">
+    <fieldset>
+        <input type="hidden" th:field="*{id}">
+        <div class="form-group">
+            <label for="adresse">Adresse : </label>
+            <input th:field="*{adresse}" type="text" class="form-control" id="adresse" placeholder="Adresse de l'incident">
+        </div>
+
+        <div class="form-group">
+            <label for="dateIncident">Date de l'incident : </label>
+            <input th:field="*{dateIncident}" type="date" class="form-control" id="dateIncident" placeholder="Date de l'incident">
+        </div>
+        <div class="form-row d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">
+            <span th:text="${incident.id == 0} ? 'Ajouter incident' : 'Modifier incident'"></span>
+            </button>
+        </div>
+    </fieldset>
+</form>
+
+<!-- <form th:action="@{/edit-incident}" th:object="${information}" method="post">
+<div class="form-group1">
+    <label for="presenceSuperEvil">Presence de super Vilain ? : </label>
+    <span>Oui</span><input th:field="*{presenceSuperEvil}" type="radio" class="form-control" id="presenceSuperEvil" placeholder="">
+</div>
+<div  class="form-group1">
+    <label for="nbrCivilPresent">Nombre de civil present :</label>
+    <input th:field="*{nbrCivilPresent}" type="text" class="form-control" id="nbrCivilPresent" placeholder="Nombre de civil present :">
+</div>
+<div class="form-group1">
+    <label for="nature">Nature : </label>
+    <select class="form-control" id="nature">
+        <option th:each="nature : ${natures}" th:text="${nature.nom}" th:value="${nature.id}"></option>
+
+    </select>
+</div>
+</form>-->
+
+</body>
+</html>

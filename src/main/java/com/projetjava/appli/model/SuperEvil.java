@@ -11,4 +11,5 @@ import java.util.Date;
 @Table( name = "superevil")
 public class SuperEvil extends Civil{
 
+
 }
