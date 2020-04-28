@@ -19,7 +19,6 @@
             <input th:field="*{dateIncident}" type="date" class="form-control" id="dateIncident" placeholder="Date de l'incident">
         </div>
 
-
         <div class="form-group d-flex h-auto">
             <label for="presenceSuperEvil">Presence de super Vilain  : </label>
             <span>Oui</span><input th:field="*{presenceSuperEvil}" value="true" type="radio" class="form-control h-auto " id="presenceSuperEvil" placeholder="">
@@ -39,7 +38,6 @@
     <button type="submit" class="btn btn-primary">
         <span th:text="${incident.id == 0} ? 'Ajouter incident' : 'Modifier incident'"></span>
     </button>
-
     </fieldset>
 </form>
 
