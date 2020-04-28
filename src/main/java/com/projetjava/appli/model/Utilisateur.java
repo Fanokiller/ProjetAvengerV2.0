@@ -4,24 +4,32 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 
-import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
 
+import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @EntityListeners(AuditingEntityListener.class)
-public abstract class Utilisateur {
+public class Utilisateur {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(unique = true)
+    private String email;
 
-    private String pseudo;
-
-    @JsonIgnore
     private String password;
+
+    @ManyToOne
+    private Role role;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     public Integer getId() {
         return id;
@@ -31,12 +39,12 @@ public abstract class Utilisateur {
         this.id = id;
     }
 
-    public String getPseudo() {
-        return pseudo;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPseudo(String pseudo) {
-        this.pseudo = pseudo;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

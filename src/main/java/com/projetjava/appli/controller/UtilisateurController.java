@@ -3,8 +3,10 @@ package com.projetjava.appli.controller;
 import com.projetjava.appli.dao.OrganisationDAO;
 import com.projetjava.appli.dao.PaysDAO;
 import com.projetjava.appli.dao.UtilisateurDAO;
+import com.projetjava.appli.model.Role;
 import com.projetjava.appli.model.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,13 +17,16 @@ import java.util.Optional;
 public class UtilisateurController {
 
     @Autowired
-    UtilisateurDAO utilisateurDAO;
+    UtilisateurDAO<Utilisateur> utilisateurDAO;
 
     @Autowired
     PaysDAO paysDAO;
 
     @Autowired
     OrganisationDAO organisationDAO;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @GetMapping("/liste-utilisateur")
     public String listeUtilisateur(Model model) {
@@ -32,7 +37,25 @@ public class UtilisateurController {
         return "liste-utilisateur";
     }
 
-    @GetMapping({"/edit-utilisateur", "/edit-utilisateur/{id}"})
+    @GetMapping("/inscription")
+    public String inscription(Model model){
+
+        model.addAttribute("utilisateur", new Utilisateur());
+        return "inscription";
+    }
+
+    @PostMapping("/inscription")
+    public String ajoutUtilisateur(@ModelAttribute("utilisateur") Utilisateur utilisateur){
+        Role role = new Role();
+        role.setId(1);
+        utilisateur.setRole(role);
+        utilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
+        utilisateurDAO.saveAndFlush(utilisateur);
+
+        return "redirect:/login";
+    }
+
+    @GetMapping({"/admin/edit-utilisateur", "/admin/edit-utilisateur/{id}"})
     public String editUtilisateur(Model model, @PathVariable Optional <Integer> id) {
 
         Utilisateur utilisateur;
@@ -51,9 +74,9 @@ public class UtilisateurController {
         return "edit-utilisateur";
     }
 
-    @PostMapping("/edit-utilisateur")
+    @PostMapping("/admin/edit-utilisateur")
     public String editUtilisateur(@ModelAttribute("utilisateur") Utilisateur utilisateur){
-
+        utilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
         utilisateur = utilisateurDAO.saveAndFlush(utilisateur);
 
         return "redirect:/liste-utilisateur";

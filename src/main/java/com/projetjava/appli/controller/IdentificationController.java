@@ -13,7 +13,7 @@ public class IdentificationController {
     @Autowired
     IdentificationDAO identificationDAO;
 
-    @GetMapping("/inscription")
+    @GetMapping("/inscription-test")
     public String inscription(Model model) {
 
 

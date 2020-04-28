@@ -4,8 +4,10 @@ package com.projetjava.appli.controller;
 import com.projetjava.appli.dao.OrganisationDAO;
 import com.projetjava.appli.dao.PaysDAO;
 import com.projetjava.appli.dao.CivilDAO;
+import com.projetjava.appli.dao.RoleDAO;
 import com.projetjava.appli.model.Civil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +31,12 @@ import java.util.Optional;
 
     @Autowired
     OrganisationDAO organisationDAO;
+
+    @Autowired
+    RoleDAO roleDAO;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @GetMapping("/liste-civil")
     public String listeCivil(Model model) {
@@ -54,6 +62,7 @@ import java.util.Optional;
 
         model.addAttribute("titre", id.isPresent() ? "Edit civils" : "Nouvel civil");
         model.addAttribute("pays", paysDAO.findAll());
+        model.addAttribute("roles", roleDAO.findAll());
         model.addAttribute("organisations", organisationDAO.findAll());
         model.addAttribute("civil", civil);
 
@@ -63,7 +72,7 @@ import java.util.Optional;
     @PostMapping("/edit-civil")
 
     public String editCivil(@ModelAttribute("civil") Civil civil){
-
+        civil.setPassword(passwordEncoder.encode(civil.getPassword()));
         civil = civilDAO.saveAndFlush(civil);
 
         return "redirect:/liste-civil";

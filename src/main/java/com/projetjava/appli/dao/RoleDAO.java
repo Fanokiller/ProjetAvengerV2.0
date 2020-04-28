@@ -1,10 +1,9 @@
 package com.projetjava.appli.dao;
 
-import com.projetjava.appli.model.Incident;
-import com.projetjava.appli.model.Litige;
+import com.projetjava.appli.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface LitigeDAO extends JpaRepository<Litige, Integer> {
+public interface RoleDAO extends JpaRepository<Role, Integer> {
 }
