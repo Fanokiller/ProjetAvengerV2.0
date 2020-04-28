@@ -55,7 +55,7 @@ public class UtilisateurController {
         return "redirect:/login";
     }
 
-    @GetMapping({"/admin/edit-utilisateur", "/admin/edit-utilisateur/{id}"})
+    @GetMapping({"/modo/edit-utilisateur", "/modo/edit-utilisateur/{id}"})
     public String editUtilisateur(Model model, @PathVariable Optional <Integer> id) {
 
         Utilisateur utilisateur;
@@ -74,7 +74,7 @@ public class UtilisateurController {
         return "edit-utilisateur";
     }
 
-    @PostMapping("/admin/edit-utilisateur")
+    @PostMapping("/modo/edit-utilisateur")
     public String editUtilisateur(@ModelAttribute("utilisateur") Utilisateur utilisateur){
         utilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
         utilisateur = utilisateurDAO.saveAndFlush(utilisateur);
@@ -88,7 +88,7 @@ public class UtilisateurController {
         return "redirect:/liste-utilisateur";
     }
 
-    @GetMapping("/suppression-utilisateur/{id}")
+    @GetMapping("/admin/suppression-utilisateur/{id}")
     public String delUtilisateur(@PathVariable Integer id){
         utilisateurDAO.deleteById(id);
 

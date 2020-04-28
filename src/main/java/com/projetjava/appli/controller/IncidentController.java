@@ -47,7 +47,7 @@ public class IncidentController {
         return "liste-incident";
     }
 
-    @GetMapping({"/edit-incident", "/edit-incident /{id}"})
+    @GetMapping({"/modo/edit-incident", "/modo/edit-incident /{id}"})
     public String editIncident(Model model, @PathVariable Optional<Integer> id) {
 
 
@@ -74,7 +74,7 @@ public class IncidentController {
         return "edit-incident";
     }
 
-    @PostMapping("/edit-incident")
+    @PostMapping("/modo/edit-incident")
     public String editIncident(@ModelAttribute("incident") Incident incident){
 
         incident = incidentDAO.saveAndFlush(incident);
@@ -83,7 +83,7 @@ public class IncidentController {
     }
 
 
-    @GetMapping("/suppression-incident/{id}")
+    @GetMapping("/admin/suppression-incident/{id}")
     public String delIncident(@PathVariable Integer id){
         incidentDAO.deleteById(id);
 

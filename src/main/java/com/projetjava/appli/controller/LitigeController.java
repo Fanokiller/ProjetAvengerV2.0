@@ -28,7 +28,7 @@ public class LitigeController {
         return "liste-litige";
     }
 
-    @GetMapping({"/edit-litige", "/edit-litige/{id}"})
+    @GetMapping({"/modo/edit-litige", "/modo/edit-litige/{id}"})
     public String editLitige(Model model, @PathVariable Optional<Integer> id) {
 
 
@@ -46,7 +46,7 @@ public class LitigeController {
         return "edit-litige";
     }
 
-    @PostMapping("/edit-litige")
+    @PostMapping("/modo/edit-litige")
     public String editLitige(@ModelAttribute("litige") Litige litige){
 
         litige = litigeDAO.saveAndFlush(litige);
@@ -54,7 +54,7 @@ public class LitigeController {
         return "redirect:/liste-litige";
     }
 
-    @GetMapping("/suppression-litige/{id}")
+    @GetMapping("/admin/suppression-litige/{id}")
     public String delLitige(@PathVariable Integer id){
         litigeDAO.deleteById(id);
 

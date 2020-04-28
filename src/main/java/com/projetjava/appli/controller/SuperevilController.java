@@ -31,7 +31,7 @@ public class SuperevilController {
         return "liste-superevil";
     }
 
-    @GetMapping({"/edit-superevil", "/edit-superevil/{id}"})
+    @GetMapping({"/modo/edit-superevil", "/modo/edit-superevil/{id}"})
     public String editSuperevil(Model model, @PathVariable Optional<Integer> id) {
 
         SuperEvil superevil;
@@ -47,7 +47,7 @@ public class SuperevilController {
 
         return "edit-superevil";
     }
-    @PostMapping("/edit-superevil")
+    @PostMapping("/modo/edit-superevil")
     public String editSuperevil(@ModelAttribute("superevil") SuperEvil superevil){
 
         superevil = superevilDAO.saveAndFlush(superevil);
@@ -55,7 +55,7 @@ public class SuperevilController {
         return "redirect:/liste-superevil";
     }
 
-    @GetMapping("/suppression-superevil/{id}")
+    @GetMapping("/admin/suppression-superevil/{id}")
     public String delSuperevil(@PathVariable Integer id){
         superevilDAO.deleteById(id);
 

@@ -29,7 +29,7 @@ public class CriseController {
         return "liste-crise";
     }
 
-    @GetMapping({"/edit-crise", "/edit-crise/{id}"})
+    @GetMapping({"/modo/edit-crise", "/modo/edit-crise/{id}"})
     public String editCrise(Model model, @PathVariable Optional<Integer> id) {
 
 
@@ -47,7 +47,7 @@ public class CriseController {
         return "edit-crise";
     }
 
-    @PostMapping("/edit-crise")
+    @PostMapping("/modo/edit-crise")
     public String editCrise(@ModelAttribute("crise") Crise crise){
 
         crise = criseDAO.saveAndFlush(crise);
@@ -55,7 +55,7 @@ public class CriseController {
         return "redirect:/liste-crise";
     }
 
-    @GetMapping("/suppression-crise/{id}")
+    @GetMapping("/admin/suppression-crise/{id}")
     public String delCrise(@PathVariable Integer id){
         criseDAO.deleteById(id);
 

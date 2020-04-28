@@ -29,7 +29,7 @@ public class RapportController {
         return "liste-rapport";
     }
 
-    @GetMapping({"/edit-rapport", "/edit-rapport/{id}"})
+    @GetMapping({"/modo/edit-rapport", "/modo/edit-rapport/{id}"})
     public String editRapport(Model model, @PathVariable Optional<Integer> id) {
 
 
@@ -47,7 +47,7 @@ public class RapportController {
         return "edit-rapport";
     }
 
-    @PostMapping("/edit-rapport")
+    @PostMapping("/modo/edit-rapport")
     public String editRapport(@ModelAttribute("rapport") Rapport rapport){
 
         rapport = rapportDAO.saveAndFlush(rapport);
@@ -55,7 +55,7 @@ public class RapportController {
         return "redirect:/liste-rapport";
     }
 
-    @GetMapping("/suppression-rapport/{id}")
+    @GetMapping("/admin/suppression-rapport/{id}")
     public String delRapport(@PathVariable Integer id){
         rapportDAO.deleteById(id);
 

@@ -38,7 +38,7 @@ public class SuperheroController {
         return "liste-superhero";
     }
 
-    @GetMapping({"/edit-superhero", "/edit-superhero/{id}"})
+    @GetMapping({"/modo/edit-superhero", "/modo/edit-superhero/{id}"})
     public String editSuperHero(Model model, @PathVariable Optional <Integer> id) {
 
         SuperHero superHero;
@@ -54,7 +54,7 @@ public class SuperheroController {
 
         return "edit-superHero";
     }
-    @PostMapping("/edit-superhero")
+    @PostMapping("/modo/edit-superhero")
     public String editSuperhero(@ModelAttribute("superhero") SuperHero superhero){
 
         superhero = superHeroDAO.saveAndFlush(superhero);
@@ -62,7 +62,7 @@ public class SuperheroController {
         return "redirect:/liste-superhero";
     }
 
-    @GetMapping("/suppression-superhero/{id}")
+    @GetMapping("/admin/suppression-superhero/{id}")
     public String delSuperhero(@PathVariable Integer id){
         superHeroDAO.deleteById(id);
 

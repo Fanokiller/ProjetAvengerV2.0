@@ -33,7 +33,7 @@ public class MissionController {
         return "liste-mission";
     }
 
-    @GetMapping({"/edit-mission", "/edit-mission/{id}"})
+    @GetMapping({"/modo/edit-mission", "/modo/edit-mission/{id}"})
     public String editMission(Model model, @PathVariable Optional<Integer> id) {
 
 
@@ -53,7 +53,7 @@ public class MissionController {
         return "edit-mission";
     }
 
-    @PostMapping("/edit-mission")
+    @PostMapping("/modo/edit-mission")
     public String editMission(@ModelAttribute("mission") Mission mission){
 
         mission = missionDAO.saveAndFlush(mission);
@@ -61,7 +61,7 @@ public class MissionController {
         return "redirect:/liste-mission";
     }
 
-    @GetMapping("/suppression-mission/{id}")
+    @GetMapping("/admin/suppression-mission/{id}")
     public String delMission(@PathVariable Integer id){
         missionDAO.deleteById(id);
 

@@ -34,7 +34,7 @@ public class OrganisationController {
         return "liste-organisation";
     }
 
-    @GetMapping({"/edit-organisation", "/edit-organisation/{id}"})
+    @GetMapping({"/modo/edit-organisation", "/modo/edit-organisation/{id}"})
     public String editOrganisation(Model model, @PathVariable Optional<Integer> id) {
 
 
@@ -54,7 +54,7 @@ public class OrganisationController {
         return "edit-organisation";
     }
 
-    @PostMapping("/edit-organisation")
+    @PostMapping("/modo/edit-organisation")
     public String editOrganisation(@ModelAttribute("organisation") Organisation organisation){
 
         organisation = organisationDAO.saveAndFlush(organisation);
@@ -62,7 +62,7 @@ public class OrganisationController {
         return "redirect:/liste-organisation";
     }
 
-    @GetMapping("/suppression-organisation/{id}")
+    @GetMapping("/admin/suppression-organisation/{id}")
     public String delOrganisation(@PathVariable Integer id){
         organisationDAO.deleteById(id);
 

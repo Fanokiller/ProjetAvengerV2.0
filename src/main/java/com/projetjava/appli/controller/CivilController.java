@@ -55,7 +55,7 @@ import java.util.Optional;
         return "liste-civil";
     }
 
-    @GetMapping({"/edit-civil", "/edit-civil/{id}"})
+    @GetMapping({"/modo/edit-civil", "/modo/edit-civil/{id}"})
     public String editCivil(Model model, @PathVariable Optional <Integer> id) {
 
         Civil civil;
@@ -79,7 +79,7 @@ import java.util.Optional;
         return "edit-civil";
     }
 
-    @PostMapping("/edit-civil")
+    @PostMapping("/modo/edit-civil")
 
     public String editCivil(@ModelAttribute("civil") Civil civil){
         civil.setPassword(passwordEncoder.encode(civil.getPassword()));
@@ -87,7 +87,7 @@ import java.util.Optional;
 
         return "redirect:/liste-civil";
     }
-    @GetMapping("/suppression-civil/{id}")
+    @GetMapping("/admin/suppression-civil/{id}")
     public String delCivil(@PathVariable Integer id){
         civilDAO.deleteById(id);
 

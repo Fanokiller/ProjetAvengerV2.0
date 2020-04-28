@@ -28,7 +28,7 @@ public class RoleController {
         return "liste-role";
     }
 
-    @GetMapping({"/edit-role", "/edit-role/{id}"})
+    @GetMapping({"/modo/edit-role", "/modo/edit-role/{id}"})
     public String editRole(Model model, @PathVariable Optional<Integer> id) {
 
 
@@ -46,7 +46,7 @@ public class RoleController {
         return "edit-role";
     }
 
-    @PostMapping("/edit-role")
+    @PostMapping("/modo/edit-role")
     public String editRole(@ModelAttribute("role") Role role){
 
         role = roleDAO.saveAndFlush(role);
@@ -54,7 +54,7 @@ public class RoleController {
         return "redirect:/liste-role";
     }
 
-    @GetMapping("/suppression-role/{id}")
+    @GetMapping("/admin/suppression-role/{id}")
     public String delRole(@PathVariable Integer id){
         roleDAO.deleteById(id);
 

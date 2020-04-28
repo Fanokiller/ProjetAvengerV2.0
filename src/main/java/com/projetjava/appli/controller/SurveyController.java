@@ -55,7 +55,7 @@ public class SurveyController {
         return "redirect:/liste-survey";
     }
 
-    @GetMapping("/suppression-survey/{id}")
+    @GetMapping("/admin/suppression-survey/{id}")
     public String delSurvey(@PathVariable Integer id){
         surveyDAO.deleteById(id);
 
