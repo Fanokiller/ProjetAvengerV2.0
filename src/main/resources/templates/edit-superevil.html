@@ -6,27 +6,24 @@
 <header th:replace="base :: header">
 </header>
 <body>
-<form th:action="@{/edit-superevil}" th:object="${superevil}" method="post">
+<form th:action="@{/modo/edit-superevil}" th:object="${superevil}" method="post">
     <fieldset>
-        <legend><font style = "vertical-align: inherit;"> Formulaire </font></legend>
-        <input type="hidden" th:field="*{id}">
+        <legend class="text-center">Formulaire</legend>
         <div class="form-row d-flex justify-content-center">
             <div class="form-group col-md- mb-3 w-25 p-3">
-                <label for="name">Evils's name</label>
-                <input th:field="*{name}" type="text" class="form-control" id="name" placeholder="Nom du Supervilain">
-            </div>
-            <div class="col-md- mb-3 w-25 p-3">
-                <label for="nickname">Evil's nickname</label>
-                <input type="text" class="form-control" id="nickname" placeholder="Prenom du Supervilain" value="Otto" required>
+                <label for="evilName">Evil's name</label>
+                <input th:field="*{evilName}" type="text" class="form-control" id="evilName" placeholder="Nom du Superevil">
             </div>
         </div>
         <div class="form-row d-flex justify-content-center">
-            <div class="form-group col-md- w-50 p-3">
-                <label for="inputState">State</label>
-                <select id="inputState" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                </select>
+            <div class = "form-group col-md- mb-3 w-25 p-3">
+                <label for = "exampleInputEmail1"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Adresse e-mail </font> </font> </label>
+                <input type = "email" class = "form-control" id = "exampleInputEmail1" aria-descriptionsby = "emailHelp" placeholder = "Entrez votre e-mail">
+                <small id = "emailHelp" class = "form-text text-muted"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Nous ne partageons jamais votre votre e -mail avec quelqu'un d'autre. </font> </font> </small>
+            </div>
+            <div class = "form-group col-md- mb-3 w-25 p-3 ">
+                <label for = "exampleInputPassword1"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Mot de passe </font> </font> </label>
+                <input type = "password" class = "form-control" id = "exampleInputPassword1" placeholder = "Mot de passe">
             </div>
         </div>
         <div class="form-row d-flex justify-content-center">
@@ -37,13 +34,6 @@
             <div class = "form-group col-md- w-25 p-3">
                 <label for = "exampleTextarea"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Point Faible  </font> </font> </label >
                 <textarea class = "form-control" id = "exampleTextarea" rows = "3"> </textarea>
-            </div>
-        </div>
-        <div class="form-row d-flex justify-content-center">
-            <div class = "form-group col-md- mb-3 w-25 p-3">
-                <label for = "exampleInputFile"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Entrez un fichier image </font> </font> </label>
-                <input type = "file" class = "form-control-file" id = "exampleInputFile" aria-descriptionsby = "fileHelp">
-                <small id = "fileHelp" class = "form-text text-muted"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Il s'agit d ' un texte d'aide au niveau du bloc d'espace réservé pour l'entrée ci-dessus. </font> <font style = "vertical-align: inherit;"> Il est un peu plus léger et s'adapte facilement à une nouvelle ligne. </font> </font> </small>
             </div>
         </div>
     </fieldset>

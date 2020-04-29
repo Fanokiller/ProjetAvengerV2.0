@@ -16,6 +16,7 @@
             <th scope="col">Nom</th>
             <th scope="col">Email</th>
             <th scope="col">role</th>
+            <th scope="col">pays</th>
             <th th:if="${role != 'ROLE_USER'}" scope="col">Edition</th>
             <th  th:if="${role == 'ROLE_ADMIN'}"scope="col">Suppression</th>
         </tr>
@@ -28,6 +29,7 @@
             <td th:text="${civil.name}" ></td>
             <td th:text="${civil.email}"></td>
             <td th:text="${civil.role.name}"></td>
+            <td th:text="${civil.pays.nom}"></td>
 
             <td th:if="${role != 'ROLE_USER'}"><a th:href="'modo/edit-civil/' + ${civil.id}" class="badge badge-success">Editer</a></td>
             <td th:if="${role == 'ROLE_ADMIN'}"><a th:href="'admin/suppression-civil/' + ${civil.id}" class="badge badge-danger">Supprimer</a></td>
@@ -38,6 +40,6 @@
 
 
 
-<a href="/modo/edit-civil" type="button" class="btn btn-success">Ajouter un civil</a>
+<a th:if="${role != 'ROLE_USER'}" href="/modo/edit-civil" type="button" class="btn btn-success">Ajouter un civil</a>
 </body>
 </html>

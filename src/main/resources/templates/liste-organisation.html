@@ -21,9 +21,10 @@
 
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <div class="d-flex  "> <span> Ville : </span><p th:text="${organisation.socialSiege} " class="card-text"></p></div>
+                <div class="d-flex  "> <span> Pays : </span><p th:text="${organisation.pays.nom} " class="card-text"></p></div>
 
-                    <a th:href="'edit-organisation/' + ${organisation.id}" class="badge badge-success">Editer</a>
-                    <a th:href="'suppression-organisation/' + ${organisation.id}" class="badge badge-danger">Supprimer</a>
+                    <a th:href="'modo/edit-organisation/' + ${organisation.id}" class="badge badge-success">Editer</a>
+                    <a th:href="'admin/suppression-organisation/' + ${organisation.id}" class="badge badge-danger">Supprimer</a>
             </div>
         </div>
     </div>
@@ -34,6 +35,6 @@
 
 </div>
 
-<a href="/edit-organisation" type="button" class="btn btn-success">Ajouter une organisation</a>
+<a href="/modo/edit-organisation" type="button" class="btn btn-success">Ajouter une organisation</a>
 </body>
 </html>
