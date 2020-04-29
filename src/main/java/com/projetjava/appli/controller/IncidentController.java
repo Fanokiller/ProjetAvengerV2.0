@@ -47,7 +47,7 @@ public class IncidentController {
         return "liste-incident";
     }
 
-    @GetMapping({"/modo/edit-incident", "/modo/edit-incident /{id}"})
+    @GetMapping({"/edit-incident", "/edit-incident /{id}"})
     public String editIncident(Model model, @PathVariable Optional<Integer> id) {
 
 

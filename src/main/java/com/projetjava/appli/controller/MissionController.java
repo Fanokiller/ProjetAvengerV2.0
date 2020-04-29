@@ -53,7 +53,7 @@ public class MissionController {
 
         return "edit-mission";
     }
-    @GetMapping({"/edit-mission/{id}"})
+    @GetMapping({"modo/edit-mission/{id}"})
     public String editMission(Model model, @PathVariable Optional<Integer> id) {
 
 
