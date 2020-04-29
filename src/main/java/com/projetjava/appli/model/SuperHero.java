@@ -10,9 +10,8 @@ import java.util.List;
 @EntityListeners(AuditingEntityListener.class)
 @Entity
 @Table( name = "superhero")
-
 public class SuperHero extends Civil{
-
+    
     @ManyToOne
     @JoinColumn(name = "id_pays")
     private Pays pays;
@@ -32,13 +31,4 @@ public class SuperHero extends Civil{
         this.listAbility = listAbility;
     }
 
-    @Override
-    public Pays getPays() {
-        return pays;
-    }
-
-    @Override
-    public void setPays(Pays pays) {
-        this.pays = pays;
-    }
 }
