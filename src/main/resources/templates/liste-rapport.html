@@ -7,7 +7,7 @@
 <body>
 
 <li th:each="rapport : ${rapports}">
-    <span th:text="${rapport.name}"></span>
+<span th:text="${rapport.mission.name}"></span>
     <a th:href="'edit-rapport/' + ${rapport.id}" class="badge badge-success">Editer</a>
     <a th:href="'suppression-rapport/' + ${rapport.id}" class="badge badge-danger">Supprimer</a>
 </li>
@@ -86,6 +86,6 @@
 </table>
 
 
-<a href="/edit-rapport" type="button" class="btn btn-success">Ajouter une rapport</a>
+<a href="/modo/edit-rapport" type="button" class="btn btn-success">Ajouter une rapport</a>
 </body>
 </html>

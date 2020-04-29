@@ -7,7 +7,9 @@ import javax.persistence.*;
 
 @EntityListeners(AuditingEntityListener.class)
 @Entity
-public class Rapport {
+@Inheritance(strategy = InheritanceType.JOINED)
+
+public class Rapport extends Mission {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,10 +17,15 @@ public class Rapport {
     private boolean succes;
     private String damage;
 
+    @OneToOne
+    private Mission mission;
+
+    @Override
     public int getId() {
         return id;
     }
 
+    @Override
     public void setId(int id) {
         this.id = id;
     }
@@ -38,4 +45,13 @@ public class Rapport {
     public void setDamage(String damage) {
         this.damage = damage;
     }
+
+    public Mission getMission() {
+        return mission;
+    }
+
+    public void setMission(Mission mission) {
+        this.mission = mission;
+    }
 }
+
