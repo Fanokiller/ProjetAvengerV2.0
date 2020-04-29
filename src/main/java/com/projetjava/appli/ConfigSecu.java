@@ -35,11 +35,13 @@ public class ConfigSecu extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/inscription").permitAll()
+                .antMatchers("/inscription-reussi").permitAll()
                 .antMatchers("/").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/modo/**").hasAnyRole("MODO","ADMIN")
                 .antMatchers("/**").hasAnyRole("USER","MODO","ADMIN")
-                .and().formLogin();
+                .and().formLogin()
+                .defaultSuccessUrl("/", true);
     }
 
     @Bean

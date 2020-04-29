@@ -31,7 +31,7 @@ public class Civil extends Utilisateur{
         this.dateNaissance = dateNaissance;
     }
 
-    private String role;
+
 
     @ManyToMany
     @JoinTable(name = "membre_organisation",
@@ -49,6 +49,19 @@ public class Civil extends Utilisateur{
     @OneToOne
     @JoinColumn(name = "id_identification")
     private Identification identification;
+
+    @ManyToOne
+    private Role role;
+
+    @Override
+    public Role getRole() {
+        return role;
+    }
+
+    @Override
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     public List<Organisation> getListeOrganisation() {
         return listeOrganisation;
