@@ -60,6 +60,12 @@ public class UtilisateurController {
         return "inscription-reussi";
     }
 
+    @GetMapping("/inscription-echec")
+    public String inscriptionEchec(){
+
+        return "inscription-echec";
+    }
+
 
     @GetMapping({"/modo/edit-utilisateur", "/modo/edit-utilisateur/{id}"})
     public String editUtilisateur(Model model, @PathVariable Optional <Integer> id) {

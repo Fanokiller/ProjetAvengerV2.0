@@ -36,6 +36,7 @@ public class ConfigSecu extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/inscription").permitAll()
                 .antMatchers("/inscription-reussi").permitAll()
+                .antMatchers("/inscription-echec").permitAll()
                 .antMatchers("/").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/modo/**").hasAnyRole("MODO","ADMIN")

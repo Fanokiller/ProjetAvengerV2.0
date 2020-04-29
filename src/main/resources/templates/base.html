@@ -40,16 +40,14 @@
                     <div class="dropdown-menu rounded-lg " style="">
                         <a class="dropdown-item" href="/liste-rapport">Rapport</a>
                         <a class="dropdown-item" href="/liste-survey">Satisfaction</a>
-                        <a class="dropdown-item" href="/liste-civil">Crise</a>
+                        <a class="dropdown-item" href="/liste-crise">Crise</a>
                         <a class="dropdown-item" href="/liste-litige">Litige</a>
                     </div>
                 </li>
-
-
-
                 <li class="nav-item">
-                    <a class="nav-link" href="/liste-incident">Incident</a>
+                <a class="nav-link" href="/liste-incident">Incident</a>
                 </li>
+
                 <li th:if="${role == 'Anonyme'}" class="nav-item">
                     <a class="nav-link" href="/login">Se connecter</a>
                 </li>
