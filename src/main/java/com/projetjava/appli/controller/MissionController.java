@@ -1,15 +1,14 @@
 package com.projetjava.appli.controller;
 
+import com.projetjava.appli.dao.IncidentDAO;
 import com.projetjava.appli.dao.MissionDAO;
 import com.projetjava.appli.dao.PaysDAO;
+import com.projetjava.appli.model.Incident;
 import com.projetjava.appli.model.Mission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -22,6 +21,9 @@ public class MissionController {
 
     PaysDAO paysDAO;
 
+    @Autowired
+    IncidentDAO incidentDAO;
+
 
     @GetMapping("/liste-mission")
     public String listeMission(Model model) {
@@ -33,19 +35,29 @@ public class MissionController {
         return "liste-mission";
     }
 
-    @GetMapping({"/edit-mission", "/edit-mission/{id}"})
+    @GetMapping({"/lancer-mission/{id}"})
+    public String lancerMission(Model model, @PathVariable Optional<Integer> id) {
+
+
+        Incident incident = incidentDAO.findById(id.get()).orElse(null);
+        Mission mission = new Mission();
+        mission.setIncident(incident);
+
+        model.addAttribute("titre", "Nouvelle mission d'aprés l'incident :  " + incident.getName() );
+        model.addAttribute("pays", paysDAO.findAll());
+
+        model.addAttribute("mission",mission);
+
+
+        return "edit-mission";
+    }
+    @GetMapping({"/edit-mission/{id}"})
     public String editMission(Model model, @PathVariable Optional<Integer> id) {
 
 
-        Mission mission;
+        Mission mission = missionDAO.findById(id.get()).orElse(null);
 
-        if(id.isPresent()){
-            mission = missionDAO.findById(id.get()).orElse(null);
-        }else {
-            mission = new Mission();
-        }
-
-        model.addAttribute("titre", id.isPresent() ? "Edit Missions" : "Nouvelle mission");
+        model.addAttribute("titre",  "Edit Missions ");
         model.addAttribute("pays", paysDAO.findAll());
 
         model.addAttribute("mission", mission);
@@ -53,8 +65,11 @@ public class MissionController {
         return "edit-mission";
     }
 
-    @PostMapping("/edit-mission")
-    public String editMission(@ModelAttribute("mission") Mission mission){
+    @PostMapping({"/edit-mission"})
+    public String editMission(@ModelAttribute("mission") Mission mission ){
+
+
+
 
         mission = missionDAO.saveAndFlush(mission);
 
@@ -67,5 +82,6 @@ public class MissionController {
 
         return "redirect:/liste-mission";
     }
+
 }
 

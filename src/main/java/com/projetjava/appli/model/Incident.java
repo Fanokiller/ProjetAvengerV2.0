@@ -21,11 +21,24 @@ public class Incident {
     private String adresse;
     private boolean presenceSuperEvil;
     private int nbrCivilPresent;
+    private String name;
+
 
     @ManyToOne
     @JoinColumn(name = "id_nature")
     private Nature nature;
     //
+
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 
     public Nature getNature() {
         return nature;
