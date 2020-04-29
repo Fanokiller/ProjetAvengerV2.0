@@ -35,7 +35,7 @@
         </div>
         <div class="form-group">
             <label for="organisation-select">Organisation</label>
-            <select class="form-control" id="organisation-select" th:field="*{listeOrganisation}" >
+            <select class="form-control" id="organisation-select" th:field="*{listeOrganisation}" multiple >
                 <option th:each="organisation : ${organisations}" th:text="${organisation.name}" th:value="${organisation.id}"></option>
             </select>
         </div>

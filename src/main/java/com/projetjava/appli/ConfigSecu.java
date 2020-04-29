@@ -35,6 +35,7 @@ public class ConfigSecu extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/inscription").permitAll()
+                .antMatchers("/").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/modo/**").hasAnyRole("MODO","ADMIN")
                 .antMatchers("/**").hasAnyRole("USER","MODO","ADMIN")

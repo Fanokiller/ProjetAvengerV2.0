@@ -13,6 +13,17 @@ public class Mission {
     private int id;
     private String name;
 
+    @OneToOne
+    private Incident incident ;
+
+    public Incident getIncident() {
+        return incident;
+    }
+
+    public void setIncident(Incident incident) {
+        this.incident = incident;
+    }
+
     public int getId() {
         return id;
     }
