@@ -41,6 +41,9 @@ import java.util.Optional;
     @Autowired
     PasswordEncoder passwordEncoder;
 
+    @Autowired
+    SuperHeroDAO superHeroDAO;
+
     @GetMapping("/liste-civil")
     public String listeCivil(Model model, Principal principal) {
 

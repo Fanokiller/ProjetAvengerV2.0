@@ -12,6 +12,11 @@ import java.util.List;
 @Table( name = "superhero")
 public class SuperHero extends Civil{
 
+
+
+
+
+
     @ManyToMany
     @JoinTable (name = "abilite_superhero",
             joinColumns = @JoinColumn (name = "id_superhero"),

@@ -17,13 +17,13 @@
                 <span>Nom de la mission : </span><h4 th:text="${mission.name} " class="card-title"></h4>
                 <span>Nom de l'incident : </span><p th:text="${mission.incident.name} " class="card-title"></p>
             </div>
-            <a th:href="'edit-rapport/'+${mission.id}" class="badge badge-primary">Fin de mission</a>
-            <a th:href="'edit-mission/' + ${mission.id}" class="badge badge-success">Editer</a>
-            <a th:href="'suppression-mission/' + ${mission.id}" class="badge badge-danger">Supprimer</a>
+            <td th:if="${role != 'ROLE_USER'}"> <a th:href="'/lancer-rapport/'+${mission.id}" class="badge badge-primary">Fin de mission</a></td>
+            <td th:if="${role != 'ROLE_USER'}" ><a th:href="'modo/Edit-mission/' + ${mission.id}" class="badge badge-success">Editer</a></td>
+            <td th:if="${role != 'ROLE_USER'}"><a th:href="'admin/suppression-mission/' + ${mission.id}" class="badge badge-danger">Supprimer</a></td>
         </div>
     </div>
 </div>
 
-<a href="/edit-mission" type="button" class="btn btn-success">Ajouter une mission</a>
+<a href="/modo/edit-mission" type="button" class="btn btn-success">Ajouter une mission</a>
 </body>
 </html>

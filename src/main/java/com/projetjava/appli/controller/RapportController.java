@@ -1,6 +1,11 @@
 package com.projetjava.appli.controller;
 
+import com.projetjava.appli.dao.IncidentDAO;
+import com.projetjava.appli.dao.MissionDAO;
+import com.projetjava.appli.dao.PaysDAO;
 import com.projetjava.appli.dao.RapportDAO;
+import com.projetjava.appli.model.Incident;
+import com.projetjava.appli.model.Mission;
 import com.projetjava.appli.model.Rapport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +22,16 @@ public class RapportController {
     @Autowired
     RapportDAO rapportDAO;
 
+    @Autowired
+    MissionDAO missionDAO;
+
+    @Autowired
+    IncidentDAO incidentDAO;
+
+    @Autowired
+    PaysDAO paysDAO;
+
+
 
 
     @GetMapping("/liste-rapport")
@@ -25,23 +40,45 @@ public class RapportController {
 
         model.addAttribute("titre", "liste des rapports");
         model.addAttribute("rapports", rapportDAO.findAll());
-
+        model.addAttribute("mission", missionDAO.findAll());
         return "liste-rapport";
     }
 
-    @GetMapping({"/modo/edit-rapport", "/modo/edit-rapport/{id}"})
+    @GetMapping({"/lancer-rapport/{id}"})
+    public String lancerRapport(Model model, @PathVariable Optional<Integer> id) {
+
+
+        Mission mission = missionDAO.findById(id.get()).orElse(null);
+        Rapport rapport = new Rapport();
+        rapport.setMission(mission);
+
+        model.addAttribute("titre", "Nouveau rapport d'apres la mission :  " + mission.getName() );
+        model.addAttribute("mission", missionDAO.findAll());
+
+
+        model.addAttribute("rapport",rapport);
+
+
+        return "edit-rapport";
+    }
+
+
+    @GetMapping("{/modo/edit-rapport/{id}")
     public String editRapport(Model model, @PathVariable Optional<Integer> id) {
 
-
+        Mission mission;
         Rapport rapport;
 
-        if(id.isPresent()){
-            rapport = rapportDAO.findById(id.get()).orElse(null);
-        }else {
-            rapport = new Rapport();
-        }
 
-        model.addAttribute("titre", id.isPresent() ? "Edit Rapports" : "Nouveau rapport");
+        rapport = rapportDAO.findById(id.get()).orElse(null);
+        mission = missionDAO.findById(id.get()).orElse(null);
+
+
+        model.addAttribute("titre", "Edit Rapport ");
+        model.addAttribute("mission", missionDAO.findAll());
+
+
+        model.addAttribute("mission",mission);
         model.addAttribute("rapport", rapport);
 
         return "edit-rapport";

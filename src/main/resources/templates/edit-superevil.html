@@ -6,7 +6,7 @@
 <header th:replace="base :: header">
 </header>
 <body>
-<form th:action="@{/edit-superevil}" th:object="${superevil}" method="post">
+<form th:action="@{/modo/edit-superevil}" th:object="${superevil}" method="post">
     <fieldset>
         <legend><font style = "vertical-align: inherit;"> Formulaire </font></legend>
         <input type="hidden" th:field="*{id}">

@@ -9,6 +9,8 @@ import java.util.List;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
+@Inheritance(strategy = InheritanceType.JOINED)
+
 @Table( name = "incident")
 public class Incident {
     @Id

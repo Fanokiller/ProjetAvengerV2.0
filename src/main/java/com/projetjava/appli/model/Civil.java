@@ -41,6 +41,10 @@ public class Civil extends Utilisateur{
 
 
 
+    @OneToOne
+    @JoinColumn(name = "id_superhero")
+    private SuperHero superHero;
+
 
     @ManyToOne
     @JoinColumn(name = "id_pays")
@@ -141,5 +145,12 @@ public class Civil extends Utilisateur{
 
     public void setIdentifiant(Identification identifiant) {
         this.identification = identifiant;
+    }
+    public SuperHero getSuperHero() {
+        return superHero;
+    }
+
+    public void setSuperHero(SuperHero superHero) {
+        this.superHero = superHero;
     }
 }
