@@ -18,6 +18,7 @@ public class Ability {
     @JoinColumn (name = "id_superevil")
 
     public int getId() {
+
         return id;
     }
 
