@@ -9,6 +9,11 @@
 <form th:action="@{/edit-incident}" th:object="${incident}" method="post">
     <fieldset>
         <input type="hidden" th:field="*{id}">
+
+        <div class="form-group">
+            <label for="name"> Nom de l'incident : </label>
+            <input th:field="*{name}" type="text" class="form-control" id="name" placeholder="Nom de l'incident">
+        </div>
         <div class="form-group">
             <label for="adresse">Adresse : </label>
             <input th:field="*{adresse}" type="text" class="form-control" id="adresse" placeholder="Adresse de l'incident">
@@ -19,8 +24,7 @@
             <input th:field="*{dateIncident}" type="date" class="form-control" id="dateIncident" placeholder="Date de l'incident">
         </div>
 
-
-        <div class="form-group d-flex h-auto">
+        <div class="form-group d-flex w-auto">
             <label for="presenceSuperEvil">Presence de super Vilain  : </label>
             <span>Oui</span><input th:field="*{presenceSuperEvil}" value="true" type="radio" class="form-control h-auto " id="presenceSuperEvil" placeholder="">
         </div>
@@ -39,7 +43,6 @@
     <button type="submit" class="btn btn-primary">
         <span th:text="${incident.id == 0} ? 'Ajouter incident' : 'Modifier incident'"></span>
     </button>
-
     </fieldset>
 </form>
 

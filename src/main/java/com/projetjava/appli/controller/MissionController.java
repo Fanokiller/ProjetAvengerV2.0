@@ -33,19 +33,29 @@ public class MissionController {
         return "liste-mission";
     }
 
-    @GetMapping({"/modo/edit-mission", "/modo/edit-mission/{id}"})
+    @GetMapping({"/lancer-mission/{id}"})
+    public String lancerMission(Model model, @PathVariable Optional<Integer> id) {
+
+
+        Incident incident = incidentDAO.findById(id.get()).orElse(null);
+        Mission mission = new Mission();
+        mission.setIncident(incident);
+
+        model.addAttribute("titre", "Nouvelle mission d'aprés l'incident :  " + incident.getName() );
+        model.addAttribute("pays", paysDAO.findAll());
+
+        model.addAttribute("mission",mission);
+
+
+        return "edit-mission";
+    }
+    @GetMapping({"/edit-mission/{id}"})
     public String editMission(Model model, @PathVariable Optional<Integer> id) {
 
 
-        Mission mission;
+        Mission mission = missionDAO.findById(id.get()).orElse(null);
 
-        if(id.isPresent()){
-            mission = missionDAO.findById(id.get()).orElse(null);
-        }else {
-            mission = new Mission();
-        }
-
-        model.addAttribute("titre", id.isPresent() ? "Edit Missions" : "Nouvelle mission");
+        model.addAttribute("titre",  "Edit Missions ");
         model.addAttribute("pays", paysDAO.findAll());
 
         model.addAttribute("mission", mission);
@@ -55,6 +65,9 @@ public class MissionController {
 
     @PostMapping("/modo/edit-mission")
     public String editMission(@ModelAttribute("mission") Mission mission){
+
+
+
 
         mission = missionDAO.saveAndFlush(mission);
 
