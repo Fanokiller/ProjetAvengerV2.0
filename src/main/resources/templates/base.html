@@ -40,24 +40,22 @@
                     <div class="dropdown-menu rounded-lg " style="">
                         <a class="dropdown-item" href="/liste-rapport">Rapport</a>
                         <a class="dropdown-item" href="/liste-survey">Satisfaction</a>
-                        <a class="dropdown-item" href="/liste-civil">Crise</a>
+                        <a class="dropdown-item" href="/liste-crise">Crise</a>
                         <a class="dropdown-item" href="/liste-litige">Litige</a>
                     </div>
                 </li>
-
-
-
                 <li class="nav-item">
-                    <a class="nav-link" href="/liste-incident">Incident</a>
+                <a class="nav-link" href="/liste-incident">Incident</a>
                 </li>
-                <li th:if="${role == 'Anonyme'}" class="nav-item">
-                    <a class="nav-link" href="/login">Se connecter</a>
-                </li>
-                <li th:if="${role != 'Anonyme'}" class="nav-item">
-                    <a class="nav-link" href="/logout">Se déconnecter</a>
-                </li>
-                <li th:if="${role == 'Anonyme'}" class="nav-item">
-                    <a class="nav-link" href="/inscription">S'inscrire</a>
+            </ul>
+            <ul class="navbar-nav ml-md-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle px-5" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Identification</a>
+                    <div class="dropdown-menu rounded-lg " style="">
+                        <a class="dropdown-item" href="/login">Se connecter</a>
+                        <a class="dropdown-item" href="/logout">Se déconnecter</a>
+                        <a class="dropdown-item" href="/inscription">S'inscrire</a>
+                    </div>
                 </li>
             </ul>
         </div>

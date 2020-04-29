@@ -3,6 +3,7 @@ package com.projetjava.appli.controller;
 
 import com.projetjava.appli.dao.CivilDAO;
 import com.projetjava.appli.dao.OrganisationDAO;
+import com.projetjava.appli.dao.PaysDAO;
 import com.projetjava.appli.dao.SuperHeroDAO;
 import com.projetjava.appli.model.SuperHero;
 import com.projetjava.appli.model.SuperHero;
@@ -28,12 +29,16 @@ public class SuperheroController {
     @Autowired
     OrganisationDAO organisationDAO;
 
+    @Autowired
+    PaysDAO paysDAO;
+
     @GetMapping("/liste-superhero")
     public String listeSuperhero(Model model) {
 
         model.addAttribute("titre", "liste des Superheros");
         model.addAttribute("superheros", superHeroDAO.findAll());
         model.addAttribute("civil", civilDAO.findAll());
+        model.addAttribute("pays", paysDAO.findAll());
 
         return "liste-superhero";
     }
@@ -51,6 +56,7 @@ public class SuperheroController {
 
         model.addAttribute("titre", id.isPresent() ? "Edit superHeros" : "Nouvel superHero");
         model.addAttribute("superhero", superHero);
+        model.addAttribute("pays", paysDAO.findAll());
 
         return "edit-superHero";
     }

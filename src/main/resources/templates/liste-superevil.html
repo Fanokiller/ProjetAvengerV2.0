@@ -5,48 +5,18 @@
 <header th:replace="base :: header">
 </header>
 <body>
-
-
-
-<li th:each="superevil : ${superevils}">
-    <span th:text="${superevil.heroName}"></span>
-    <a th:href="'edit-superevil/' + ${superevil.id}" class="badge badge-success">Editer</a>
-    <a th:href="'suppression-superevil/' + ${superevil.id}" class="badge badge-danger">Supprimer</a>
-</li>
-</ul>
-
-<div class="table-responsive-sm align-items-center">
-    <table class="table">
-
-        <thead class="thead-dark">
-        <tr>
-            <th  scope="col">#</th>
-            <th scope="col">Prenom</th>
-            <th scope="col">Nom</th>
-            <th scope="col">role</th>
-            <th scope="col">Edition</th>
-            <th scope="col">Suppression</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="superevil : ${superevils}" >
-            <th scope="row"></th>
-            <td  th:text="${superevil.nickname} "></td>
-            <td th:text="${superevil.name}" ></td>
-            <td th:text="${superevil.role}"></td>
-            <td th:text="${superevil.heroName}"></td>
-
-
-            <td><a th:href="'edit-superevil/' + ${superevil.id}" class="badge badge-success">Editer</a></td>
-            <td><a th:href="'suppression-superevil/' + ${superevil.id}" class="badge badge-danger">Supprimer</a></td>
-        </tr>
-
-        </tbody>
-
-
-
-    </table>
+<div class="Container">
+    <div class="row justify-content-center ">
+        <div th:each="superevil : ${superevils}" class="card border-info mb-3" style="max-width: 20rem;">
+            <div class="card-title text-center"></div>
+            <div class="card-body">
+                <h4 th:text="${superevil.evilName}" class="card-title"></h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a th:href="'modo/edit-superevil/' + ${superevil.id}" class="badge badge-success">Editer</a>
+                <a th:href="'admin/suppression-superevil/' + ${superevil.id}" class="badge badge-danger">Supprimer</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 <a href="/modo/edit-superevil" type="button" class="btn btn-success">Ajouter un superevil</a>
