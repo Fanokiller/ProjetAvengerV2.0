@@ -10,20 +10,24 @@
 
 <div class="Container">
     <div class="row justify-content-center ">
-        <div th:each="mission : ${missions}" class="card col-md-4 border-info bg-success text-white flex mr-3 mb-3" style="max-width: 20rem;">
+        <div th:each="mission : ${missions}" class="card col-md-4 border-success bg-light text-white flex mr-3 mb-3" style="max-width: 20rem;">
             <div class="card-header">Incidents</div>
             <div class="card-body">
 
                 <span>Nom de la mission : </span><h4 th:text="${mission.name} " class="card-title"></h4>
-                <span>Nom de l'incident : </span><p th:text="${mission.incident.name} " class="card-title"></p>
+<!--                <span>Nom de l'incident : </span><p th:text="${mission.incident.name} " class="card-title"></p>-->
             </div>
-            <td th:if="${role != 'ROLE_USER'}"> <a th:href="'/lancer-rapport/'+${mission.id}" class="badge badge-primary">Fin de mission</a></td>
-            <td th:if="${role != 'ROLE_USER'}" ><a th:href="'modo/Edit-mission/' + ${mission.id}" class="badge badge-success">Editer</a></td>
-            <td th:if="${role != 'ROLE_USER'}"><a th:href="'admin/suppression-mission/' + ${mission.id}" class="badge badge-danger">Supprimer</a></td>
+            <div class="d-flex justify-content-around m-3 ">
+            <td th:if="${role != 'ROLE_USER'}"> <a th:href="'/lancer-rapport/'+${mission.id}" class="badge badge-primary p-3">Fin de mission</a></td>
+            <td th:if="${role != 'ROLE_USER'}" ><a th:href="'modo/Edit-mission/' + ${mission.id}" class="badge badge-success p-3">Editer</a></td>
+            <td th:if="${role != 'ROLE_USER'}"><a th:href="'admin/suppression-mission/' + ${mission.id}" class="badge badge-danger p-3 ">Supprimer</a></td>
+        </div>
         </div>
     </div>
 </div>
+<div class="text-center m-3">
+    <a href="/modo/edit-mission" type="button" class="btn btn-success">Ajouter une mission</a>
+</div>
 
-<a href="/modo/edit-mission" type="button" class="btn btn-success">Ajouter une mission</a>
 </body>
 </html>

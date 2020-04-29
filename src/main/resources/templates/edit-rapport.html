@@ -11,8 +11,6 @@
 <form th:action="@{/modo/edit-rapport}" th:object="${rapport}" method="post" class="mx-20">
 
     <fieldset>
-
-
         <input type="hidden" th:field="*{id}">
 
         <div class="form-group">
@@ -21,29 +19,16 @@
         </div>
         <div class="form-group d-flex w-auto">
             <label for="succes"> Succes de la mission : </label>
-            <span>Oui</span><input th:field="*{succes}" value="true" type="radio" class="form-control h-auto " id="succes" placeholder="">
+            <span>Oui</span><input th:field="*{succes}" value="true" type="radio" class="form-control ml-3 w-auto " id="succes" placeholder="">
         </div>
-        <div class="form-group col-md- mb-3 w-25 p-3">
-            <label for="mission-select">Pays</label>
-            <select class="form-control" id="mission-select" th:field="*{mission}">
-                <option th:each="mission : ${missions}" th:text="${mission.name}" th:value="${mission.id}"></option>
-            </select>
-        </div>
-        <div>
-            <input type="radio" id="huey" name="drone" value="huey"
-                   checked>
-            <label for="huey">Huey</label>
-        </div>
+<!--        <div class="form-group col-md- mb-3 w-25 p-3">-->
+<!--            <label for="nom-select">Nom</label>-->
+<!--            <select class="form-control" id="nom-select" th:field="*{mission}">-->
+<!--                <option th:each="mission : ${missions}" th:text="${mission.name}" th:value="${mission.id}"></option>-->
+<!--            </select>-->
+<!--        </div>-->
 
-        <div>
-            <input type="radio" id="dewey" name="drone" value="dewey">
-            <label for="dewey">Dewey</label>
-        </div>
 
-        <div>
-            <input type="radio" id="louie" name="drone" value="louie">
-            <label for="louie">Louie</label>
-        </div>
 
 
 

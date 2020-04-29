@@ -4,12 +4,11 @@ package com.projetjava.appli.model;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-
+@Table(name = "rapport")
 @EntityListeners(AuditingEntityListener.class)
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 
-public class Rapport extends Mission {
+public class Rapport {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,14 +17,13 @@ public class Rapport extends Mission {
     private String damage;
 
     @OneToOne
+    @JoinColumn(name = "id_incident")
     private Mission mission;
 
-    @Override
     public int getId() {
         return id;
     }
 
-    @Override
     public void setId(int id) {
         this.id = id;
     }
@@ -54,4 +52,5 @@ public class Rapport extends Mission {
         this.mission = mission;
     }
 }
+
 

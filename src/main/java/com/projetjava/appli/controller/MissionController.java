@@ -27,6 +27,8 @@ public class MissionController {
     IncidentDAO incidentDAO;
 
 
+
+
     @GetMapping("/liste-mission")
     public String listeMission(Model model) {
 
@@ -46,7 +48,7 @@ public class MissionController {
         mission.setIncident(incident);
 
         model.addAttribute("titre", "Nouvelle mission d'aprés l'incident :  " + incident.getName() );
-        model.addAttribute("pays", paysDAO.findAll());
+        model.addAttribute("incident", incidentDAO.findAll());
 
         model.addAttribute("mission",mission);
 

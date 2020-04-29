@@ -28,8 +28,7 @@ public class RapportController {
     @Autowired
     IncidentDAO incidentDAO;
 
-    @Autowired
-    PaysDAO paysDAO;
+
 
 
 

@@ -7,7 +7,8 @@
 <body>
 
 <li th:each="rapport : ${rapports}">
-<span th:text="${rapport.mission.name}"></span>
+<span th:text="${rapport.mission}"></span>
+
     <a th:href="'edit-rapport/' + ${rapport.id}" class="badge badge-success">Editer</a>
     <a th:href="'suppression-rapport/' + ${rapport.id}" class="badge badge-danger">Supprimer</a>
 </li>

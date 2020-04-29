@@ -8,7 +8,7 @@
 
 <div class="Container">
     <div class="row justify-content-center ">
-        <div th:each="incident : ${incidents}" class="card col-md-4 border-info bg-primary text-white flex mr-3 mb-3" style="max-width: 20rem;">
+        <div th:each="incident : ${incidents}" class="card col-md-4 border-primary bg-light text-white flex mr-3 mb-3" style="max-width: 20rem;">
             <div class="card-header">Incidents</div>
                 <div class="card-body">
                     <span>Nom de l'incident </span><h4 th:text="${incident.name} " class="card-title"></h4>
@@ -19,12 +19,17 @@
                     <span>Nombre de civil sur place ? </span><p th:text="${incident.nbrCivilPresent}"></p>
                      <!-- <span>Civil declarant :  </span><p th:text="${civil.name.id}" class="card-text"></p> -->
                 </div>
-            <td><a th:href="'lancer-mission/' + ${incident.id}" class="badge badge-success">Lancer une mission</a></td>
-            <td><a th:href="'suppression-incident/' + ${incident.id}" class="badge badge-danger">Supprimer</a></td>
+            <div class="d-flex justify-content-around m-3">
+            <td><a th:href="'lancer-mission/' + ${incident.id}" class="badge badge-success p-3">Lancer une mission</a></td>
+            <td><a th:href="'suppression-incident/' + ${incident.id}" class="badge badge-danger p-3">Supprimer</a></td>
+            </div>
             </div>
         </div>
 </div>
+<div class="text-center m-3">
+    <a href="/modo/edit-incident" type="button" class="btn btn-success">Ajouter un incident</a>
 
-        <a href="/modo/edit-incident" type="button" class="btn btn-success">Ajouter un incident</a>
+</div>
+
 </body>
 </html>
