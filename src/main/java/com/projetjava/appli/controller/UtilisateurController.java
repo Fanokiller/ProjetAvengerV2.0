@@ -52,8 +52,14 @@ public class UtilisateurController {
         utilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
         utilisateurDAO.saveAndFlush(utilisateur);
 
-        return "redirect:/login";
+        return "redirect:/inscription-reussi";
     }
+    @GetMapping("/inscription-reussi")
+    public String inscriptionReussi(){
+
+        return "inscription-reussi";
+    }
+
 
     @GetMapping({"/modo/edit-utilisateur", "/modo/edit-utilisateur/{id}"})
     public String editUtilisateur(Model model, @PathVariable Optional <Integer> id) {

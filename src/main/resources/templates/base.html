@@ -27,10 +27,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Listes</a>
                     <div class="dropdown-menu rounded-lg " style="">
-                        <a class="dropdown-item" href="/liste-utilisateur">Liste Utilisateurs</a>
                         <a class="dropdown-item" href="/liste-civil">Liste Civils</a>
                         <a class="dropdown-item" href="/liste-organisation">Liste Organisation</a>
-                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/liste-superhero">Liste Super Heros</a>
                         <a class="dropdown-item" href="/liste-superevil">Liste Super Vilains</a>
 
@@ -41,11 +39,9 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Formulaires</a>
                     <div class="dropdown-menu rounded-lg " style="">
                         <a class="dropdown-item" href="/liste-rapport">Rapport</a>
-                        <a class="dropdown-item" href="#">Satisfaction</a>
-                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/liste-survey">Satisfaction</a>
                         <a class="dropdown-item" href="/liste-civil">Crise</a>
                         <a class="dropdown-item" href="/liste-litige">Litige</a>
-
                     </div>
                 </li>
 
@@ -54,17 +50,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/liste-incident">Incident</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/edit-utilisateur">Se connecter</a>
+                <li th:if="${role == 'Anonyme'}" class="nav-item">
+                    <a class="nav-link" href="/login">Se connecter</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/edit-utilisateur">S'inscrire</a>
+                <li th:if="${role != 'Anonyme'}" class="nav-item">
+                    <a class="nav-link" href="/logout">Se déconnecter</a>
+                </li>
+                <li th:if="${role == 'Anonyme'}" class="nav-item">
+                    <a class="nav-link" href="/inscription">S'inscrire</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2 rounded-lg" type="text" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0 rounded-lg" type="submit">Search</button>
-            </form>
         </div>
     </nav>
     <h1 th:text="${titre}" class="text-center mb-5 mt-5 "></h1>

@@ -1,13 +1,10 @@
 package com.projetjava.appli.controller;
 
 
-import com.projetjava.appli.dao.IdentificationDAO;
-import com.projetjava.appli.dao.OrganisationDAO;
-import com.projetjava.appli.dao.PaysDAO;
-import com.projetjava.appli.dao.CivilDAO;
-import com.projetjava.appli.dao.RoleDAO;
+import com.projetjava.appli.dao.*;
 import com.projetjava.appli.model.Civil;
 import com.projetjava.appli.model.Identification;
+import com.projetjava.appli.model.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -17,9 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
-import java.util.Date;
-import java.util.List;
+import java.security.Principal;
 import java.util.Optional;
 
 @Controller
@@ -28,6 +23,8 @@ import java.util.Optional;
     @Autowired
     IdentificationDAO identificationDAO;
 
+    @Autowired
+    UtilisateurDAO<Utilisateur> utilisateurDAO;
 
     @Autowired
     CivilDAO civilDAO;
@@ -45,14 +42,15 @@ import java.util.Optional;
     PasswordEncoder passwordEncoder;
 
     @GetMapping("/liste-civil")
-    public String listeCivil(Model model) {
+    public String listeCivil(Model model, Principal principal) {
 
+        Utilisateur utilisateur = utilisateurDAO.findByEmail(principal.getName()).orElse(null);
         model.addAttribute("titre", "liste des civils");
         model.addAttribute("civils", civilDAO.findAll());
         model.addAttribute("pays",paysDAO.findAll());
+        model.addAttribute("role", utilisateur != null ? utilisateur.getRole().getName():null);
 
-
-        return "liste-civil";
+        return "civil/liste-civil";
     }
 
     @GetMapping({"/modo/edit-civil", "/modo/edit-civil/{id}"})
@@ -76,7 +74,7 @@ import java.util.Optional;
         model.addAttribute("identification", identificationDAO.findAll());
 
 
-        return "edit-civil";
+        return "civil/edit-civil";
     }
 
     @PostMapping("/modo/edit-civil")
