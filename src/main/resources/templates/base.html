@@ -12,18 +12,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <header th:fragment="header">
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand" href="/">App'Vengers</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Accueil</a>
                 </li>
-
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Listes</a>
                     <div class="dropdown-menu rounded-lg " style="">
@@ -31,12 +30,10 @@
                         <a class="dropdown-item" href="/liste-organisation">Liste Organisation</a>
                         <a class="dropdown-item" href="/liste-superhero">Liste Super Heros</a>
                         <a class="dropdown-item" href="/liste-superevil">Liste Super Vilains</a>
-
-
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Formulaires</a>
+                    <a class="nav-link dropdown-toggle mr-md-2" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Formulaires</a>
                     <div class="dropdown-menu rounded-lg " style="">
                         <a class="dropdown-item" href="/liste-rapport">Rapport</a>
                         <a class="dropdown-item" href="/liste-survey">Satisfaction</a>
@@ -44,20 +41,18 @@
                         <a class="dropdown-item" href="/liste-litige">Litige</a>
                     </div>
                 </li>
-
-
-
                 <li class="nav-item">
                     <a class="nav-link" href="/liste-incident">Incident</a>
                 </li>
-                <li th:if="${role == 'Anonyme'}" class="nav-item">
-                    <a class="nav-link" href="/login">Se connecter</a>
-                </li>
-                <li th:if="${role != 'Anonyme'}" class="nav-item">
-                    <a class="nav-link" href="/logout">Se déconnecter</a>
-                </li>
-                <li th:if="${role == 'Anonyme'}" class="nav-item">
-                    <a class="nav-link" href="/inscription">S'inscrire</a>
+            </ul>
+            <ul class="navbar-nav ml-md-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle px-5" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Identification</a>
+                    <div class="dropdown-menu rounded-lg " style="">
+                        <a class="dropdown-item" href="/login">Se connecter</a>
+                        <a class="dropdown-item" href="/logout">Se déconnecter</a>
+                        <a class="dropdown-item" href="/inscription">S'inscrire</a>
+                    </div>
                 </li>
             </ul>
         </div>
