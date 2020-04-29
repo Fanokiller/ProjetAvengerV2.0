@@ -1,51 +1,45 @@
 package com.projetjava.appli;
 
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import static org.junit.Assert.*;
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
+import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = RANDOM_PORT, classes = AppliApplication.class)
-public class AppliApplicationTests {
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+class SpringsecurityApplicationTests {
 
-	TestRestTemplate restTemplate;
-	URL base;
+	@Autowired
+	private WebApplicationContext context;
 
-	@Before
-	public void setUp() throws MalformedURLException {
-		restTemplate = new TestRestTemplate("Ludo@test.fr", "ROOT");
-		base = new URL("http://localhost:8080");
+	private MockMvc mvc;
+
+	@BeforeEach
+	public void setup() {
+		mvc = MockMvcBuilders
+				.webAppContextSetup(context)
+				.apply(springSecurity())
+				.build();
 	}
 
+	@WithMockUser(username = "Ludo@test.fr", roles={"ADMIN"})
 	@Test
-	public void whenLoggedUserRequestsHomePage_ThenSuccess() throws IllegalStateException, IOException {
-		ResponseEntity<String> response = restTemplate.getForEntity(base.toString(), String.class);
+	public void givenAuthRequestOnPrivateService_shouldSucceedWith200() throws Exception {
 
-		assertEquals(HttpStatus.OK, response.getStatusCode());
-		assertTrue(response
-				.getBody()
-				.contains("Baeldung"));
+		mvc.perform(get("/admin/hello"))
+				.andExpect(status().isOk());
 	}
 
-	@Test
-	public void whenUserWithWrongCredentials_thenUnauthorizedPage() throws IllegalStateException, IOException {
-		restTemplate = new TestRestTemplate();
-		TestRestTemplate template = restTemplate.withBasicAuth("Ludo@test.fr", "ROOT");
-		ResponseEntity<String> response = template.getForEntity(base.toString() + "/liste-civil", String.class);
-
-		assertEquals(HttpStatus.OK, response.getStatusCode());
-		assertNull(response.getBody());
-	}
 }
+
