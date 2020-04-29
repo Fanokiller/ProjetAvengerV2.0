@@ -10,6 +10,7 @@ import java.util.List;
 @EntityListeners(AuditingEntityListener.class)
 @Entity
 @Table( name = "superhero")
+
 public class SuperHero extends Civil{
 
     @ManyToMany

@@ -13,10 +13,6 @@ public class Mission {
     private int id;
     private String name;
 
-    @OneToOne
-    //Urgence
-    //Rapport
-
     public int getId() {
         return id;
     }
