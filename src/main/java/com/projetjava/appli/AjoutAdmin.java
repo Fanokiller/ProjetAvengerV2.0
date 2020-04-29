@@ -19,14 +19,14 @@ public class AjoutAdmin implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        /*Utilisateur utilisateur = new Utilisateur();
-        Role role = new Role();
-        role.setId(2);
-        utilisateur.setPassword("ROOT");
-        utilisateur.setEmail("Ludo@test.fr");
-        utilisateur.setRole(role);
-        utilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
-        utilisateurDAO.saveAndFlush(utilisateur);*/
+//        Utilisateur utilisateur = new Utilisateur();
+//        Role role = new Role();
+//        role.setId(2);
+//        utilisateur.setPassword("ROOT");
+//        utilisateur.setEmail("Antho@test.fr");
+//        utilisateur.setRole(role);
+//        utilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
+//        utilisateurDAO.saveAndFlush(utilisateur);
 
     }
 }

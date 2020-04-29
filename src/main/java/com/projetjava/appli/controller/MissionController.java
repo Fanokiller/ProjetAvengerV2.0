@@ -1,7 +1,9 @@
 package com.projetjava.appli.controller;
 
+import com.projetjava.appli.dao.IncidentDAO;
 import com.projetjava.appli.dao.MissionDAO;
 import com.projetjava.appli.dao.PaysDAO;
+import com.projetjava.appli.model.Incident;
 import com.projetjava.appli.model.Mission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,8 +21,10 @@ public class MissionController {
     MissionDAO missionDAO;
 
     @Autowired
-
     PaysDAO paysDAO;
+
+    @Autowired
+    IncidentDAO incidentDAO;
 
 
     @GetMapping("/liste-mission")
