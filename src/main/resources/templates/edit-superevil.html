@@ -11,14 +11,14 @@
         <legend class="text-center">Formulaire</legend>
         <div class="form-row d-flex justify-content-center">
             <div class="form-group col-md- mb-3 w-25 p-3">
-                <label for="evilName">Evil's name</label>
-                <input th:field="*{evilName}" type="text" class="form-control" id="evilName" placeholder="Nom du Superevil">
+                <label for="name">Evil's name</label>
+                <input th:field="*{evilName}" type="text" class="form-control" id="name" placeholder="Nom du Superevil">
             </div>
         </div>
         <div class="form-row d-flex justify-content-center">
             <div class = "form-group col-md- mb-3 w-25 p-3">
                 <label for = "exampleInputEmail1"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Adresse e-mail </font> </font> </label>
-                <input type = "email" class = "form-control" id = "exampleInputEmail1" aria-descriptionsby = "emailHelp" placeholder = "Entrez votre e-mail">
+                <input th:field="*{email} "type = "email" class = "form-control" id = "exampleInputEmail1" aria-descriptionsby = "emailHelp" placeholder = "Entrez votre e-mail">
                 <small id = "emailHelp" class = "form-text text-muted"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Nous ne partageons jamais votre votre e -mail avec quelqu'un d'autre. </font> </font> </small>
             </div>
             <div class = "form-group col-md- mb-3 w-25 p-3 ">
@@ -27,15 +27,34 @@
             </div>
         </div>
         <div class="form-row d-flex justify-content-center">
-            <div class = "form-group col-md- w-25 p-3">
-                <label for = "exampleTextarea"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Pouvoir </font> </font> </label >
-                <textarea class = "form-control" id = "Textarea" rows = "3"> </textarea>
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="pays-select">Pays</label>
+                <select class="form-control" id="pays-select" th:field="*{pays}">
+                    <option th:each="p : ${pays}" th:text="${p.nom}" th:value="${p.id}"></option>
+                </select>
             </div>
-            <div class = "form-group col-md- w-25 p-3">
-                <label for = "exampleTextarea"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Point Faible  </font> </font> </label >
-                <textarea class = "form-control" id = "exampleTextarea" rows = "3"> </textarea>
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="organisation-select">Organisation</label>
+                <select class="form-control" id="organisation-select" th:field="*{listeOrganisation}">
+                    <option th:each="o : ${organisation}" th:text="${o.name}" th:value="${o.id}"></option>
+                </select>
             </div>
         </div>
+        <div class="form-row d-flex justify-content-center">
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="ability-select">Pouvoir</label>
+                <select class="form-control" id="ability-select" th:field="*{listAbility}">
+                    <option th:each="a : ${ability}" th:text="${a.name}" th:value="${a.id}"></option>
+                </select>
+            </div>
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="weakness-select">Point faible</label>
+                <select class="form-control" id="weakness-select" th:field="*{listWeakness}">
+                    <option th:each="w : ${weakness}" th:text="${w.name}" th:value="${w.id}"></option>
+                </select>
+            </div>
+        </div>
+
     </fieldset>
     <div class="form-row d-flex justify-content-center">
         <button type="submit" class="btn btn-primary">

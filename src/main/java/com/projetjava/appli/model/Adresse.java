@@ -16,6 +16,27 @@ public class Adresse {
 
     @ManyToOne
     @JoinColumn (name = "id_civil")
+    private Civil civil;
+
+    @ManyToOne
+    @JoinColumn (name = "id_superhero")
+    private SuperHero superHero;
+
+    public Civil getCivil() {
+        return civil;
+    }
+
+    public void setCivil(Civil civil) {
+        this.civil = civil;
+    }
+
+    public SuperHero getSuperHero() {
+        return superHero;
+    }
+
+    public void setSuperHero(SuperHero superHero) {
+        this.superHero = superHero;
+    }
 
     public int getId() {
         return id;

@@ -5,13 +5,15 @@
 <header th:replace="base :: header">
 </header>
 <body>
-
-<li th:each="survey : ${surveys}">
-    <span th:text="${survey.event}"></span>
-    <a th:href="'edit-survey/' + ${survey.id}" class="badge badge-success">Editer</a>
-    <a th:href="'suppression-survey/' + ${survey.id}" class="badge badge-danger">Supprimer</a>
-</li>
-</ul>
-<a href="/modo/dit-rapport" type="button" class="btn btn-success">Ajouter un questionnaire</a>
+<div th:each="survey : ${surveys}" class="card text-white bg-dark mb-3" style="max-width: 20rem;">
+    <div class="card-header">Commentaire</div>
+    <div class="card-body">
+        <h5 th:text="${survey.event}" class="card-title"></h5>
+        <span>Commentaire à l'intention de :  <h6 th:text="${survey.superHero.heroName}" class="card-text"></h6></span>
+        <a th:href="'modo/edit-survey/' + ${survey.id}" class="badge badge-success">Editer</a>
+        <a th:href="'admin/suppression-survey/' + ${survey.id}" class="badge badge-danger">Supprimer</a>
+    </div>
+</div>
+<a href="/modo/edit-survey" type="button" class="btn btn-success">Ajouter un questionnaire</a>
 </body>
 </html>

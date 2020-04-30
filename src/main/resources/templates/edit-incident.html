@@ -36,7 +36,6 @@
             <label for="nature-select">Nature</label>
             <select class="form-control" id="nature-select" th:field="*{nature}">
                 <option th:each="nature : ${nature}" th:text="${nature.name}" th:value="${nature.id}"></option>
-
             </select>
         </div>
 

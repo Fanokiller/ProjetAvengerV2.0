@@ -13,6 +13,10 @@ public class Survey {
     private int id;
     private String event;
 
+    @OneToOne
+    @JoinColumn(name = "id_superhero")
+    private SuperHero superHero;
+
     public int getId() {
         return id;
     }
@@ -27,5 +31,13 @@ public class Survey {
 
     public void setEvent(String event) {
         this.event = event;
+    }
+
+    public SuperHero getSuperHero() {
+        return superHero;
+    }
+
+    public void setSuperHero(SuperHero superHero) {
+        this.superHero = superHero;
     }
 }

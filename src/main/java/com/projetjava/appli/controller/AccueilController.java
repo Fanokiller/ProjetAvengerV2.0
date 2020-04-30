@@ -24,7 +24,6 @@ public class AccueilController {
         }else {
             model.addAttribute("role", "Anonyme");
         }
-        model.addAttribute("titre", "Accueil");
         return "accueil";
     }
     @GetMapping("/admin/hello")

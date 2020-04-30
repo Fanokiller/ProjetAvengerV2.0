@@ -16,21 +16,19 @@ public class Incident {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private String name;
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateIncident;
     private String adresse;
     private boolean presenceSuperEvil;
     private int nbrCivilPresent;
-    private String name;
+
 
 
     @ManyToOne
     @JoinColumn(name = "id_nature")
     private Nature nature;
-    //
-
-
 
     public String getName() {
         return name;
@@ -40,7 +38,6 @@ public class Incident {
         this.name = name;
     }
 
-
     public Nature getNature() {
         return nature;
     }
@@ -48,9 +45,6 @@ public class Incident {
     public void setNature(Nature nature) {
         this.nature = nature;
     }
-
-
-
 
     public boolean isPresenceSuperEvil() {
         return presenceSuperEvil;
@@ -67,11 +61,6 @@ public class Incident {
     public void setNbrCivilPresent(int nbrCivilPresent) {
         this.nbrCivilPresent = nbrCivilPresent;
     }
-
-
-
-
-
 
     public int getId() {
         return id;

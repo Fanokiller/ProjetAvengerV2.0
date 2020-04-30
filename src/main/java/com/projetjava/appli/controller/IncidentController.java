@@ -29,9 +29,6 @@ public class IncidentController {
     @Autowired
     NatureDAO natureDAO;
 
-    @Autowired
-
-    IdentificationDAO identificationDAO;
 
 
 
@@ -68,7 +65,6 @@ public class IncidentController {
         model.addAttribute("civil", civilDAO.findAll());
         model.addAttribute("organisations", organisationDAO.findAll());
         model.addAttribute("nature", natureDAO.findAll());
-        model.addAttribute("identification",identificationDAO.findAll());
 
 
         return "edit-incident";

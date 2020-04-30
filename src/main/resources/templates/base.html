@@ -49,13 +49,14 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle px-5" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Identification</a>
                     <div class="dropdown-menu rounded-lg " style="">
-                        <a class="dropdown-item" href="/login">Se connecter</a>
-                        <a class="dropdown-item" href="/logout">Se déconnecter</a>
-                        <a class="dropdown-item" href="/inscription">S'inscrire</a>
+                        <a th:if="${role == 'Anonyme'}" class="dropdown-item" href="/login">Se connecter</a>
+                        <a th:if="${role != 'Anonyme'}"class="dropdown-item" href="/logout">Se déconnecter</a>
+                        <a th:if="${role == 'Anonyme'}" class="dropdown-item" href="/inscription">S'inscrire</a>
                     </div>
                 </li>
             </ul>
         </div>
     </nav>
+    <h1 th:text="${titre}" class="text-center mb-5 mt-5 "></h1>
 </header>
 </html>
