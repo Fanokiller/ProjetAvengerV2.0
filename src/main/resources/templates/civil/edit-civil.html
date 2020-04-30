@@ -11,41 +11,48 @@
 
 
         <input type="hidden" th:field="*{id}">
-        <div class="form-group">
-            <label for="nickname">Prénom</label>
-            <input th:field="*{nickname}" type="text" class="form-control" id="nickname" placeholder="Prénom du civil">
+        <div class="form-row d-flex justify-content-center">
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="nickname">Prénom</label>
+                <input th:field="*{nickname}" type="text" class="form-control" id="nickname" placeholder="Prénom du civil">
+            </div>
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="name">Nom</label>
+                <input th:field="*{name}" type="text" class="form-control" id="name" placeholder="Nom du civil">
+            </div>
         </div>
-        <div class="form-group">
-            <label for="name">Nom</label>
-            <input th:field="*{name}" type="text" class="form-control" id="name" placeholder="Nom du civil">
+        <div class="form-row d-flex justify-content-center">
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="email">Email</label>
+                <input th:field="*{email}" type="text" class="form-control" id="email" placeholder="Email du civil">
+            </div>
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="password">Mot de passe</label>
+                <input th:field="*{password}" type="text" class="form-control" id="password" placeholder="Mot de passe du civil">
+            </div>
         </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input th:field="*{email}" type="text" class="form-control" id="email" placeholder="Email du civil">
+        <div class="form-row d-flex justify-content-center">
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="role-select">Role</label>
+                <select class="form-control" id="role-select" th:field="*{role}">
+                    <option th:each="r : ${roles}" th:text="${r.name}" th:value="${r.id}"></option>
+                </select>
+            </div>
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="pays-select">Pays</label>
+                <select class="form-control" id="pays-select" th:field="*{pays}">
+                    <option th:each="p : ${pays}" th:text="${p.nom}" th:value="${p.id}"></option>
+                </select>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="password">Mot de passe</label>
-            <input th:field="*{password}" type="text" class="form-control" id="password" placeholder="Mot de passe du civil">
+        <div class="form-row d-flex justify-content-center">
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="organisation-select">Organisation</label>
+                <select class="form-control" id="organisation-select" th:field="*{listeOrganisation}" multiple >
+                    <option th:each="organisation : ${organisations}" th:text="${organisation.name}" th:value="${organisation.id}"></option>
+                </select>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="role-select">Role</label>
-            <select class="form-control" id="role-select" th:field="*{role}">
-                <option th:each="r : ${roles}" th:text="${r.name}" th:value="${r.id}"></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="organisation-select">Organisation</label>
-            <select class="form-control" id="organisation-select" th:field="*{listeOrganisation}" multiple >
-                <option th:each="organisation : ${organisations}" th:text="${organisation.name}" th:value="${organisation.id}"></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="pays-select">Pays</label>
-            <select class="form-control" id="pays-select" th:field="*{pays}">
-                <option th:each="p : ${pays}" th:text="${p.nom}" th:value="${p.id}"></option>
-            </select>
-        </div>
-
     </fieldset>
 
     <button type="submit" class="btn btn-primary">

@@ -11,11 +11,13 @@
 <div class="Container">
     <div class="row justify-content-center ">
         <div th:each="mission : ${missions}" class="card col-md-4 border-info bg-success text-white flex mr-3 mb-3" style="max-width: 20rem;">
-            <div class="card-header">Incidents</div>
+            <div class="card-header">Mission</div>
             <div class="card-body">
 
                 <span>Nom de la mission : </span><h4 th:text="${mission.name} " class="card-title"></h4>
                 <span>Nom de l'incident : </span><p th:text="${mission.incident.name} " class="card-title"></p>
+                <span>Lieu de l'incident : </span><p th:text="${mission.pays.nom} " class="card-title"></p>
+                <span>Organisation en charge de l'incident : </span><p th:text="${mission.organisation.name} " class="card-title"></p>
             </div>
             <td th:if="${role != 'ROLE_USER'}"> <a th:href="'/lancer-rapport/'+${mission.id}" class="badge badge-primary">Fin de mission</a></td>
             <td th:if="${role != 'ROLE_USER'}" ><a th:href="'modo/Edit-mission/' + ${mission.id}" class="badge badge-success">Editer</a></td>

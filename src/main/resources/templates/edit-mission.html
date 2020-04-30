@@ -8,9 +8,9 @@
 <body>
 <form th:action="@{/modo/edit-mission/}" th:object="${mission}" method="post">
     <fieldset>
-        <legend><font style = "vertical-align: inherit;"> Formulaire </font></legend>
-        <input type="" th:field="*{id}">
-        <input type="" th:field="*{incident}" >
+        <legend class="text-center">Formulaire</legend>
+        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{incident}" >
         <div class="form-row d-flex justify-content-center">
             <div class="form-group col-md- mb-3 w-25 p-3">
                 <label for="name">Mission's name</label>
@@ -18,21 +18,20 @@
             </div>
         </div>
         <div class="form-row d-flex justify-content-center">
-            <div class="form-group col-md- w-50 p-3">
-                <label for="inputState">State</label>
-                <select id="inputState" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>...</option>
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="pays-select">Pays</label>
+                <select class="form-control" id="pays-select" th:field="*{pays}">
+                    <option th:each="p : ${pays}" th:text="${p.nom}" th:value="${p.id}"></option>
+                </select>
+            </div>
+            <div class="form-group col-md- mb-3 w-25 p-3">
+                <label for="organisation-select">Organisation</label>
+                <select class="form-control" id="organisation-select" th:field="*{Organisation}">
+                    <option th:each="o : ${organisation}" th:text="${o.name}" th:value="${o.id}"></option>
                 </select>
             </div>
         </div>
-        <div class="form-row d-flex justify-content-center">
-            <div class = "form-group col-md- mb-3 w-25 p-3">
-                <label for = "exampleInputFile"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Entrez un fichier image </font> </font> </label>
-                <input type = "file" class = "form-control-file" id = "exampleInputFile" aria-descriptionsby = "fileHelp">
-                <small id = "fileHelp" class = "form-text text-muted"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Il s'agit d ' un texte d'aide au niveau du bloc d'espace réservé pour l'entrée ci-dessus. </font> <font style = "vertical-align: inherit;"> Il est un peu plus léger et s'adapte facilement à une nouvelle ligne. </font> </font> </small>
-            </div>
-        </div>
+
     </fieldset>
     <div class="form-row d-flex justify-content-center">
         <button type="submit" class="btn btn-primary">

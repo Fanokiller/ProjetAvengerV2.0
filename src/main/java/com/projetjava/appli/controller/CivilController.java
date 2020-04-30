@@ -69,7 +69,7 @@ import java.util.Optional;
         }
 
 
-        model.addAttribute("titre", id.isPresent() ? "Edit civils" : "Nouvel civil");
+        model.addAttribute("titre", id.isPresent() ? "Edit civils" : "Nouveau civil");
         model.addAttribute("pays", paysDAO.findAll());
         model.addAttribute("roles", roleDAO.findAll());
         model.addAttribute("organisations", organisationDAO.findAll());

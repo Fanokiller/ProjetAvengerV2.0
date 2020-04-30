@@ -2,6 +2,7 @@ package com.projetjava.appli.controller;
 
 import com.projetjava.appli.dao.IncidentDAO;
 import com.projetjava.appli.dao.MissionDAO;
+import com.projetjava.appli.dao.OrganisationDAO;
 import com.projetjava.appli.dao.PaysDAO;
 import com.projetjava.appli.model.Incident;
 import com.projetjava.appli.model.Mission;
@@ -26,6 +27,8 @@ public class MissionController {
     @Autowired
     IncidentDAO incidentDAO;
 
+    @Autowired
+    OrganisationDAO organisationDAO;
 
     @GetMapping("/liste-mission")
     public String listeMission(Model model) {
@@ -33,6 +36,8 @@ public class MissionController {
 
         model.addAttribute("titre", "liste des missions");
         model.addAttribute("missions", missionDAO.findAll());
+        model.addAttribute("pays", paysDAO.findAll());
+        model.addAttribute("organisation", organisationDAO.findAll());;
 
         return "liste-mission";
     }
@@ -47,6 +52,7 @@ public class MissionController {
 
         model.addAttribute("titre", "Nouvelle mission d'aprés l'incident :  " + incident.getName() );
         model.addAttribute("pays", paysDAO.findAll());
+        model.addAttribute("organisation", organisationDAO.findAll());
 
         model.addAttribute("mission",mission);
 
@@ -61,6 +67,7 @@ public class MissionController {
 
         model.addAttribute("titre",  "Edit Missions ");
         model.addAttribute("pays", paysDAO.findAll());
+        model.addAttribute("organisation", organisationDAO.findAll());
 
         model.addAttribute("mission", mission);
 

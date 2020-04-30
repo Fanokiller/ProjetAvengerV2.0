@@ -1,22 +1,19 @@
 package com.projetjava.appli.model;
 
-
-import org.springframework.boot.autoconfigure.web.ConditionalOnEnabledResourceChain;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 
 @Entity
+@Table(name = "success")
 @EntityListeners(AuditingEntityListener.class)
-public class Crise {
+public class Success {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String type;
+    private String name;
 
-    @OneToOne
-    @JoinColumn(name = "id_gravity")
-    private Gravity gravity;
 
 
     public int getId() {
@@ -27,11 +24,13 @@ public class Crise {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
+    public String getName() {
+        return name;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setName(String name) {
+        this.name = name;
     }
+
+
 }

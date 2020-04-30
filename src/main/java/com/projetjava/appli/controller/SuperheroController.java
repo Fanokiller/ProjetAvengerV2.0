@@ -1,10 +1,9 @@
 package com.projetjava.appli.controller;
 
 
-import com.projetjava.appli.dao.CivilDAO;
-import com.projetjava.appli.dao.OrganisationDAO;
-import com.projetjava.appli.dao.PaysDAO;
-import com.projetjava.appli.dao.SuperHeroDAO;
+import com.projetjava.appli.dao.*;
+import com.projetjava.appli.model.Ability;
+import com.projetjava.appli.model.Adresse;
 import com.projetjava.appli.model.SuperHero;
 import com.projetjava.appli.model.SuperHero;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +31,12 @@ public class SuperheroController {
     @Autowired
     PaysDAO paysDAO;
 
+    @Autowired
+    AbilityDAO abilityDAO;
+
+    @Autowired
+    WeaknessDAO weaknessDAO;
+
     @GetMapping("/liste-superhero")
     public String listeSuperhero(Model model) {
 
@@ -39,6 +44,7 @@ public class SuperheroController {
         model.addAttribute("superheros", superHeroDAO.findAll());
         model.addAttribute("civil", civilDAO.findAll());
         model.addAttribute("pays", paysDAO.findAll());
+        model.addAttribute("organisation", organisationDAO.findAll());
 
         return "liste-superhero";
     }
@@ -57,6 +63,10 @@ public class SuperheroController {
         model.addAttribute("titre", id.isPresent() ? "Edit superHeros" : "Nouvel superHero");
         model.addAttribute("superhero", superHero);
         model.addAttribute("pays", paysDAO.findAll());
+        model.addAttribute("organisation", organisationDAO.findAll());
+        model.addAttribute("civil", civilDAO.findAll());
+        model.addAttribute("ability", abilityDAO.findAll());
+        model.addAttribute("weakness", weaknessDAO.findAll());
 
         return "edit-superHero";
     }

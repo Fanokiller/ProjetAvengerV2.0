@@ -16,11 +16,11 @@
                     <span>Adresse de l'incident : </span><p th:text="${incident.adresse}" class="card-text"></p>
                     <span>Presence d'un SuperVilain ? </span><p th:text="${incident.presenceSuperEvil}"></p>
                  <span>Nature de l'incident : </span><p th:text="${incident.nature.name}"></p>
-                    <span>Nombre de civil sur place ? </span><p th:text="${incident.nbrCivilPresent}"></p>
+                    <span>Nombre de civil sur place : </span><p th:text="${incident.nbrCivilPresent}"></p>
                      <!-- <span>Civil declarant :  </span><p th:text="${civil.name.id}" class="card-text"></p> -->
                 </div>
             <td><a th:href="'lancer-mission/' + ${incident.id}" class="badge badge-success">Lancer une mission</a></td>
-            <td><a th:href="'suppression-incident/' + ${incident.id}" class="badge badge-danger">Supprimer</a></td>
+            <td><a th:href="'admin/suppression-incident/' + ${incident.id}" class="badge badge-danger">Supprimer</a></td>
             </div>
         </div>
 </div>

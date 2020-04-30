@@ -1,12 +1,10 @@
 package com.projetjava.appli.controller;
 
-import com.projetjava.appli.dao.IncidentDAO;
-import com.projetjava.appli.dao.MissionDAO;
-import com.projetjava.appli.dao.PaysDAO;
-import com.projetjava.appli.dao.RapportDAO;
+import com.projetjava.appli.dao.*;
 import com.projetjava.appli.model.Incident;
 import com.projetjava.appli.model.Mission;
 import com.projetjava.appli.model.Rapport;
+import com.projetjava.appli.model.Success;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +29,11 @@ public class RapportController {
     @Autowired
     PaysDAO paysDAO;
 
+    @Autowired
+    DamageDAO damageDAO;
 
+    @Autowired
+    SuccessDAO successDAO;
 
 
     @GetMapping("/liste-rapport")
@@ -41,6 +43,8 @@ public class RapportController {
         model.addAttribute("titre", "liste des rapports");
         model.addAttribute("rapports", rapportDAO.findAll());
         model.addAttribute("mission", missionDAO.findAll());
+        model.addAttribute("damage", damageDAO.findAll());
+        model.addAttribute("successs", successDAO.findAll());
         return "liste-rapport";
     }
 
@@ -54,8 +58,8 @@ public class RapportController {
 
         model.addAttribute("titre", "Nouveau rapport d'apres la mission :  " + mission.getName() );
         model.addAttribute("mission", missionDAO.findAll());
-
-
+        model.addAttribute("damage", damageDAO.findAll());
+        model.addAttribute("success", successDAO.findAll());
         model.addAttribute("rapport",rapport);
 
 
@@ -76,7 +80,8 @@ public class RapportController {
 
         model.addAttribute("titre", "Edit Rapport ");
         model.addAttribute("mission", missionDAO.findAll());
-
+        model.addAttribute("damage", damageDAO.findAll());
+        model.addAttribute("successs", successDAO.findAll());
 
         model.addAttribute("mission",mission);
         model.addAttribute("rapport", rapport);

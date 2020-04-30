@@ -7,43 +7,48 @@ import javax.persistence.*;
 
 @EntityListeners(AuditingEntityListener.class)
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 
-public class Rapport extends Mission {
+
+public class Rapport {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private boolean succes;
-    private String damage;
 
     @OneToOne
+    @JoinColumn(name = "id_damage")
+    private Damage damage;
+
+    @OneToOne
+    @JoinColumn(name = "id_success")
+    private Success success;
+
+    @OneToOne
+    @JoinColumn(name = "id_mission")
     private Mission mission;
 
-    @Override
     public int getId() {
         return id;
     }
 
-    @Override
     public void setId(int id) {
         this.id = id;
     }
 
-    public boolean isSucces() {
-        return succes;
-    }
-
-    public void setSucces(boolean succes) {
-        this.succes = succes;
-    }
-
-    public String getDamage() {
+    public Damage getDamage() {
         return damage;
     }
 
-    public void setDamage(String damage) {
+    public void setDamage(Damage damage) {
         this.damage = damage;
+    }
+
+    public Success getSuccess() {
+        return success;
+    }
+
+    public void setSuccess(Success success) {
+        this.success = success;
     }
 
     public Mission getMission() {

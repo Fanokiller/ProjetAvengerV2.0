@@ -1,6 +1,8 @@
 package com.projetjava.appli.controller;
 
+import com.projetjava.appli.dao.SuperHeroDAO;
 import com.projetjava.appli.dao.SurveyDAO;
+import com.projetjava.appli.model.SuperHero;
 import com.projetjava.appli.model.Survey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,8 @@ public class SurveyController {
     @Autowired
     SurveyDAO surveyDAO;
 
+    @Autowired
+    SuperHeroDAO superHeroDAO;
 
 
     @GetMapping("/liste-survey")
@@ -25,11 +29,12 @@ public class SurveyController {
 
         model.addAttribute("titre", "liste des surveys");
         model.addAttribute("surveys", surveyDAO.findAll());
+        model.addAttribute("superhero", superHeroDAO.findAll());
 
         return "liste-survey";
     }
 
-    @GetMapping({"/edit-survey", "/edit-survey/{id}"})
+    @GetMapping({"/modo/edit-survey", "/modo/edit-survey/{id}"})
     public String editSurvey(Model model, @PathVariable Optional<Integer> id) {
 
 
@@ -43,11 +48,15 @@ public class SurveyController {
 
         model.addAttribute("titre", id.isPresent() ? "Edit Surveys" : "Nouveau survey");
         model.addAttribute("survey", survey);
+        model.addAttribute("superhero", superHeroDAO.findAll());
+        model.addAttribute("surveys", surveyDAO.findAll());
+
+
 
         return "edit-survey";
     }
 
-    @PostMapping("/edit-survey")
+    @PostMapping("/modo/edit-survey")
     public String editSurvey(@ModelAttribute("survey") Survey survey){
 
         survey = surveyDAO.saveAndFlush(survey);

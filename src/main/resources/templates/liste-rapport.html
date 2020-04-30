@@ -5,87 +5,45 @@
 <header th:replace="base :: header">
 </header>
 <body>
-
-<li th:each="rapport : ${rapports}">
-<span th:text="${rapport.mission.name}"></span>
-    <a th:href="'edit-rapport/' + ${rapport.id}" class="badge badge-success">Editer</a>
-    <a th:href="'suppression-rapport/' + ${rapport.id}" class="badge badge-danger">Supprimer</a>
-</li>
-</ul>
-<table class = "table table-hover">
-    <thead>
-    <tr>
-        <th scope = "col"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Tapez </font> </font> </th>
-        <th scope = "col"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> En-tête de colonne </font> </font> </ th >
-        <th scope = "col"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> En-tête de colonne </font> </font> </ th >
-        <th scope = "col"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> En-tête de colonne </font> </font> </ th >
-    </tr>
-    </thead>
-    <tbody>
-    <tr class = "table-active">
-        <th scope = "row"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> actif </font> </font> </th>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-    </tr>
-    <tr>
-        <th scope = "row"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Défaut </font> </font> </th>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-    </tr>
-    <tr class = "table-primary">
-        <th scope = "row"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Primaire </font> </font> </th>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-    </tr>
-    <tr class = "table-secondaire">
-        <th scope = "row"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Secondaire </font> </font> </th>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-    </tr>
-    <tr class = "table-success">
-        <th scope = "row"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Succès </font> </font> </th>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-    </tr>
-    <tr class = "table-danger">
-        <th scope = "row"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Danger </font> </font> </th>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-    </tr>
-    <tr class = "table-warning">
-        <th scope = "row"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> avertissement </font> </font> </th>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-    </tr>
-    <tr class = "table-info">
-        <th scope = "row"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Info </font> </font> </th>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-    </tr>
-    <tr class = "table-light">
-        <th scope = "row"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Lumière </font> </font> </th>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-    </tr>
-    <tr class = "table-dark">
-        <th scope = "row"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Foncé </font> </font> </th>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-        <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> Contenu de la colonne </font> </font> </td>
-    </tr>
+<table class="table table-hover">
+<!--<li th:each="rapport : ${rapports}">
+    <div th:if="${rapport.success == 1}">
+        <span th:text="${rapport.mission.name}"></span>
+        <span th:text="${rapport.success}"></span>
+        <span th:text="${rapport.damage}"></span>
+    </div>
+</li>-->
+    <tbody th:each="rapport : ${rapports}">
+        <tr th:if="${rapport.success.id == 3}" class="table-success">
+            <td th:text="${rapport.mission.name}"></td>
+            <td th:text="${rapport.success.name}"></td>
+            <td th:text="${rapport.damage.name}"></td>
+            <td><a th:href="'edit-rapport/' + ${rapport.id}" class="badge badge-success">Editer</a></td>
+            <td><a th:href="'suppression-rapport/' + ${rapport.id}" class="badge badge-danger">Supprimer</a></td>
+        </tr>
+        <tr th:if="${rapport.success.id == 4}" class="table-danger">
+            <td th:text="${rapport.mission.name}"></td>
+            <td th:text="${rapport.success.name}"></td>
+            <td th:text="${rapport.damage.name}"></td>
+            <td><a th:href="'edit-rapport/' + ${rapport.id}" class="badge badge-success">Editer</a></td>
+            <td><a th:href="'suppression-rapport/' + ${rapport.id}" class="badge badge-danger">Supprimer</a></td>
+        </tr>
+        <tr th:if="${rapport.success.id == 2}" class="table-warning">
+            <td th:text="${rapport.mission.name}"></td>
+            <td th:text="${rapport.success.name}"></td>
+            <td th:text="${rapport.damage.name}"></td>
+            <td><a th:href="'edit-rapport/' + ${rapport.id}" class="badge badge-success">Editer</a></td>
+            <td><a th:href="'suppression-rapport/' + ${rapport.id}" class="badge badge-danger">Supprimer</a></td>
+        </tr>
+        <tr th:if="${rapport.success.id == 1}" class="table-info">
+            <td th:text="${rapport.mission.name}"></td>
+            <td th:text="${rapport.success.name}"></td>
+            <td th:text="${rapport.damage.name}"></td>
+            <td><a th:href="'edit-rapport/' + ${rapport.id}" class="badge badge-success">Editer</a></td>
+            <td><a th:href="'suppression-rapport/' + ${rapport.id}" class="badge badge-danger">Supprimer</a></td>
+        </tr>
     </tbody>
+
 </table>
-
-
-<a href="/modo/edit-rapport" type="button" class="btn btn-success">Ajouter une rapport</a>
 </body>
 </html>
